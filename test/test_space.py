@@ -1,0 +1,87 @@
+import pytest
+import numpy as np
+
+from digging.problem import DiscreteSpace, ContinuousSpace, TupleSpace, DictSpace
+
+
+@pytest.mark.unittest
+def test_discrete():
+    space = DiscreteSpace(3)
+    assert len(space) == 1
+    assert space.nshape == 3
+    x = space.sample()
+    assert space.shape == x.shape
+    assert 0 <= x < 3
+
+    space = DiscreteSpace([3])
+    assert len(space) == 1
+    assert space.nshape == 3
+    x = space.sample()
+    assert 0 <= x < 3
+    assert space.shape == x.shape
+
+    space = DiscreteSpace([3, 4, 5])
+    assert len(space) == 3
+    assert (space.nshape == [3, 4, 5]).all()
+    x = space.sample()
+    assert space.shape == x.shape
+    assert (x < np.array([3, 4, 5])).all()
+    assert (x >= np.array([0, 0, 0])).all()
+    y = space.convert_to_sample(space.convert_to_data(x))
+    assert (x == y).all()
+    x = space.sample_single(1)
+    assert 0 <= x < 4
+
+
+@pytest.mark.unittest
+def test_continuous():
+    space = ContinuousSpace(5, np.array([-5, -4, -3, -2, -1]), 0)
+    assert len(space) == 5
+    assert space.shape == [5]
+    assert space.bounds.shape == (5, 2)
+    x = space.sample()
+    assert (x < 0).all()
+    assert (x > np.array([-5, -4, -3, -2, -1])).all()
+
+    space = ContinuousSpace([3, 4])
+    assert not space._bounded_above.any() and not space._bounded_below.any()
+    assert len(space) == 12
+    assert (space.shape == (3, 4)).all()
+    x = space.sample()
+    assert x.shape == (3, 4)
+    y = space.convert_to_sample(space.convert_to_data(x))
+    assert (x == y).all()
+
+
+@pytest.mark.unittest
+def test_tuple():
+    space_1 = DiscreteSpace([2, 4])
+    space_2 = ContinuousSpace((3, 3))
+    space = TupleSpace(space_1, space_2)
+    assert len(space) == 2
+    assert space.shape[0] == (2, ) and (space.shape[1] == (3, 3)).all()
+    assert (space.nshape[0] == (2, 4)).all() and (space.nshape[1] == (3, 3)).all()
+
+    x = space.sample()
+    assert x[0].shape == (2, ) and x[1].shape == (3, 3)
+    y = space.convert_to_sample(space.convert_to_data(x))
+    assert (x[0] == y[0]).all() and (x[1] == y[1]).all()
+
+
+@pytest.mark.unittest
+def test_dict():
+    space_1 = DiscreteSpace([2, 4])
+    space_a = ContinuousSpace((3, 3))
+    space_b = DiscreteSpace([5], dtype=np.uint8)
+    space_2 = TupleSpace(space_a, space_b)
+    space = DictSpace(discrete=space_1, tuple=space_2)
+    x = space.sample()
+    assert set(x.keys()) == set(('discrete', 'tuple'))
+    assert x['discrete'].shape == (2,)
+    assert x['tuple'].shape == (2,)
+    assert x['tuple'][0].shape == (3, 3)
+    assert x['tuple'][1].dtype == np.uint8
+    y = space.convert_to_sample(space.convert_to_data(x))
+    assert (x['discrete'] == y['discrete']).all()
+    assert (x['tuple'][0] == y['tuple'][0]).all()
+    assert (x['tuple'][1] == y['tuple'][1]).all()
