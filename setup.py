@@ -37,6 +37,8 @@ setup(
             'enum_tools',
             'sphinx-toolbox',
             'recommonmark',
+            'plantumlcli>=0.0.2',
+            'sphinx-multiversion~=0.2.4',
         ],
         'test': [
             'pytest~=6.2.5',
