@@ -34,7 +34,6 @@ class TestProblemHandler:
         handler = ProblemHandler(space)
         x = np.asarray([[0.2], [0.5], [1]], dtype=np.float32)
         scores = [target_function({'x': xi, 'y': None}) for xi in x]
-        print(x, scores)
         handler.update_data(x, np.asarray(scores))
         best_x, best_y = handler.provide_best()
         assert best_y == 0
