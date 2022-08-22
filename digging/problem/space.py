@@ -230,6 +230,7 @@ class ContinuousSpace(BaseSpace):
         return np.asarray(sample, dtype=self._dtype)
 
     def convert_to_sample(self, data: np.ndarray) -> np.ndarray:
+        data = data.reshape(self.shape)
         return data
 
     def create_empty(self) -> np.ndarray:
@@ -285,10 +286,12 @@ class TupleSpace(BaseSpace):
         return np.array(samples, dtype=object)
 
     def convert_to_data(self, sample: Any) -> np.ndarray:
-        return np.asarray(sample)
+        data = [space.convert_to_data(sample[i]) for i, space in enumerate(self._spaces)]
+        return np.asarray(data)
 
     def convert_to_sample(self, data: np.ndarray) -> np.ndarray:
-        return data
+        sample = [space.convert_to_sample(data[i]) for i, space in enumerate(self._spaces)]
+        return np.asarray(sample)
 
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, len(self._spaces)), dtype=object)
@@ -336,7 +339,8 @@ class DictSpace(BaseSpace):
         :return np.ndarray: The converted data array.
         """
         assert set(sample) == set(self._keys)
-        return np.asarray([sample[key] for key in self._keys], dtype=object)
+        data = [self._spaces[i].convert_to_data(sample[key]) for i, key in enumerate(self._keys)]
+        return np.asarray(data)
 
     def convert_to_sample(self, data: np.ndarray) -> Dict:
         r"""
@@ -346,7 +350,7 @@ class DictSpace(BaseSpace):
         :return Dict: The original sample.
         """
         assert len(data) == len(self._keys)
-        return {key: data[i] for i, key in enumerate(self._keys)}
+        return {key: self._spaces[i].convert_to_sample(data[i]) for i, key in enumerate(self._keys)}
 
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, len(self._spaces)), dtype=object)
