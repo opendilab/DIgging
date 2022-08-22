@@ -12,7 +12,7 @@ class BaseDigger(ABC):
 
     config = dict()
 
-    def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None:
+    def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None: # noqa
         if 'cfg_type' not in cfg:
             self._cfg = self.__class__.default_config()
             self._cfg = deep_merge_dicts(self._cfg, cfg)
