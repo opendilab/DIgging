@@ -15,19 +15,19 @@ def target_function(data_dict):
 class TestProblemHandler:
 
     def test_common(self):
-        space = DictSpace(x=DiscreteSpace(5), y=ContinuousSpace(5))
+        space = DictSpace(x=DiscreteSpace([3, 4]), y=ContinuousSpace((2, 3)))
         handler = ProblemHandler(space)
         assert handler.space == space
         assert len(handler) == 0
         sample = {
-            'x': np.array([0], dtype=np.int64),
-            'y': np.array([0, 0, 0, 0, 0], dtype=np.float32)
+            'x': np.array([0, 1], dtype=np.int64),
+            'y': np.array([[0, 0, 0], [1, 1, 1]], dtype=np.float32)
         }
         score = target_function(sample)
         handler.update_data([sample], np.asarray([score]))
         assert len(handler) == 1
         scores = handler.get_cached_score([sample])
-        assert scores[0] == -0.25
+        assert scores[0] == -0.5
 
     def test_best(self):
         space = ContinuousSpace(1)

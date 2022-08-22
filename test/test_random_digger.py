@@ -20,7 +20,7 @@ def target_dict(x):
 
 
 @pytest.mark.unittest
-class TestRandomEndine:
+class TestRandomDigger:
 
     config = dict()
 
@@ -41,10 +41,10 @@ class TestRandomEndine:
         assert sample.shape == (2, 3)
         assert (sample > 0).all()
 
-    # def test_dict_space(self):
-    #     space = DictSpace(x0=DiscreteSpace([3, 4]), x1=ContinuousSpace((2, 3)))
-    #     engine = RandomDigger(self.config, space)
-    #     engine.search(target_dict)
-    #     sample, score = engine.best
-    #     assert sample['x0'].shape == (2, )
-    #     assert sample['x1'].shape == (2, 3)
+    def test_dict_space(self):
+        space = DictSpace(x0=DiscreteSpace(5), x1=ContinuousSpace(5))
+        engine = RandomDigger(self.config, space)
+        engine.search(target_dict)
+        sample, score = engine.best
+        assert sample['x0'].shape == (1, )
+        assert sample['x1'].shape == (5,)

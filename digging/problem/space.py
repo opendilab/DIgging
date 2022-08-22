@@ -122,7 +122,7 @@ class DiscreteSpace(BaseSpace):
         assert position < len(self._nshape)
         return self._random_state.randint(self._nshape[position])
 
-    def convert_to_data(self, sample: Any) -> np.ndarray:
+    def convert_to_data(self, sample: Any, flatten: bool = False) -> np.ndarray:
         return np.asarray(sample, dtype=self._dtype)
 
     def convert_to_sample(self, data: np.ndarray) -> np.ndarray:
@@ -226,12 +226,15 @@ class ContinuousSpace(BaseSpace):
 
         return sample.astype(self._dtype)
 
-    def convert_to_data(self, sample: Any) -> np.ndarray:
-        return np.asarray(sample, dtype=self._dtype)
+    def convert_to_data(self, sample: Any, flatten: bool = False) -> np.ndarray:
+        data = np.asarray(sample)
+        if flatten:
+            data = data.flatten()
+        return data
 
     def convert_to_sample(self, data: np.ndarray) -> np.ndarray:
-        data = data.reshape(self.shape)
-        return data
+        sample = data.reshape(self.shape)
+        return sample
 
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, *self._shape), dtype=self._dtype)
@@ -279,18 +282,21 @@ class TupleSpace(BaseSpace):
 
         :return np.ndarray: Sample array.
         """
-        samples = np.zeros(shape=(len(self, )), dtype=object)
-        for i in range(len(self)):
-            space = self._spaces[i]
-            samples[i] = space.sample()
-        return np.array(samples, dtype=object)
+        sample = np.zeros(shape=(len(self._spaces)), dtype=object)
+        for i, space in enumerate(self._spaces):
+            sample[i] = space.sample()
+        return np.asarray(sample)
 
-    def convert_to_data(self, sample: Any) -> np.ndarray:
-        data = [space.convert_to_data(sample[i]) for i, space in enumerate(self._spaces)]
+    def convert_to_data(self, sample: Any,) -> np.ndarray:
+        data = np.zeros(shape=(len(self._spaces)), dtype=object)
+        for i, space in enumerate(self._spaces):
+            data[i] = space.convert_to_data(sample[i])
         return np.asarray(data)
 
     def convert_to_sample(self, data: np.ndarray) -> np.ndarray:
-        sample = [space.convert_to_sample(data[i]) for i, space in enumerate(self._spaces)]
+        sample = np.zeros(shape=(len(self._spaces)), dtype=object)
+        for i in range(len(self._spaces)):
+            sample[i] = self._spaces[i].convert_to_sample(data[i])
         return np.asarray(sample)
 
     def create_empty(self) -> np.ndarray:
@@ -339,7 +345,9 @@ class DictSpace(BaseSpace):
         :return np.ndarray: The converted data array.
         """
         assert set(sample) == set(self._keys)
-        data = [self._spaces[i].convert_to_data(sample[key]) for i, key in enumerate(self._keys)]
+        data = np.zeros(shape=(len(self._keys)), dtype=object)
+        for i, key in enumerate(self._keys):
+            data[i] = self._spaces[i].convert_to_data(sample[key])
         return np.asarray(data)
 
     def convert_to_sample(self, data: np.ndarray) -> Dict:
