@@ -1,6 +1,6 @@
 # DIgging
 
-DIgging -- Decision Intelligence for digging better samples
+DIgging -- Decision Intelligence for digging better parameters in target function/environments.
 
 
 ## Introduction
@@ -13,12 +13,11 @@ DIgging -- Decision Intelligence for digging better samples
 
 
 ## Outlines
-- [DIgging](#DIgging)
+- [DIgging](#digging)
   - [Introduction](#introduction)
   - [Outlines](#outlines)
   - [Installation](#installation)
   - [Quick start](#quick-start)
-  - [Engine Zoo](#engine-zoo)
   - [License](#license)
 
 

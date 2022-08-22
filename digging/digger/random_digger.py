@@ -9,7 +9,7 @@ from digging.problem import ProblemHandler
 class RandomDigger(BaseDigger):
     config = dict(num_sample=100, )
 
-    def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None: # noqa
+    def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None:  # noqa
         super().__init__(cfg, search_space, random_state)
         self._handler = ProblemHandler(search_space)
 
