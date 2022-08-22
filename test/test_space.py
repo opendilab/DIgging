@@ -111,8 +111,8 @@ class TestDictSpace():
         space = DictSpace(discrete=space_1, tuple=space_2)
         x = space.sample()
         assert set(x.keys()) == set(('discrete', 'tuple'))
-        assert x['discrete'].shape == (2,)
-        assert x['tuple'].shape == (2,)
+        assert x['discrete'].shape == (2, )
+        assert x['tuple'].shape == (2, )
         assert x['tuple'][0].shape == (3, 3)
         assert x['tuple'][1].dtype == np.uint8
         y = space.convert_to_sample(space.convert_to_data(x))

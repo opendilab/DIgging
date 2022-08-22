@@ -287,7 +287,10 @@ class TupleSpace(BaseSpace):
             sample[i] = space.sample()
         return np.asarray(sample)
 
-    def convert_to_data(self, sample: Any,) -> np.ndarray:
+    def convert_to_data(
+            self,
+            sample: Any,
+    ) -> np.ndarray:
         data = np.zeros(shape=(len(self._spaces)), dtype=object)
         for i, space in enumerate(self._spaces):
             data[i] = space.convert_to_data(sample[i])

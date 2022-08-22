@@ -47,4 +47,4 @@ class TestRandomDigger:
         engine.search(target_dict)
         sample, score = engine.best
         assert sample['x0'].shape == (1, )
-        assert sample['x1'].shape == (5,)
+        assert sample['x1'].shape == (5, )

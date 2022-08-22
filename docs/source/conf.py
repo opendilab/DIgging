@@ -14,7 +14,6 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-
 # -- Project information -----------------------------------------------------
 
 import os
@@ -41,7 +40,6 @@ author = __AUTHOR__
 version = version_.parse(__VERSION__).base_version
 # The full version, including alpha/beta/rc tags
 release = __VERSION__
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -79,7 +77,6 @@ language = 'en'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 

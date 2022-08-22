@@ -3,10 +3,22 @@ from typing import Any, Callable, Dict, Tuple
 
 from .base_digger import BaseDigger, DIGGER_REGISTRY
 from digging.problem import ProblemHandler
+from digging.problem.space import BaseSpace
 
 
 @DIGGER_REGISTRY.register('random')
 class RandomDigger(BaseDigger):
+    r"""
+    Random digger of provided searching space. The random candidates comes from the :func:`sample`
+    method of the space.
+
+    :param Dict cfg: user config
+    :param BaseSpace search_space: searching space of engine
+    :param Any random_state: the random state to set the random seed or state of the engine. If the
+        value is an integer, it is used as the seed for creating a ``numpy.random.RandomState``.
+        Otherwise, the random state provided it is used. When set to None, an unseeded random state
+        is generated. Defaults to None
+    """
     config = dict(num_sample=100, )
 
     def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None:  # noqa
