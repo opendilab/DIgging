@@ -94,10 +94,13 @@
 <li class="toctree-l2"><a class="reference internal" href="digger.html">digging.digger</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">digging.problem</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#problemhandler">ProblemHandler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#discretespace">DiscreteSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#continuousspace">ContinuousSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tuplespace">TupleSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dictspace">DictSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spaces">Spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#discretespace">DiscreteSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#continuousspace">ContinuousSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuplespace">TupleSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dictspace">DictSpace</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -243,8 +246,10 @@ Best score and sample will be stored.</p>
 </dd></dl>
 
 </section>
+<section id="spaces">
+<h2>Spaces<a class="headerlink" href="#spaces" title="Permalink to this heading">¶</a></h2>
 <section id="discretespace">
-<h2>DiscreteSpace<a class="headerlink" href="#discretespace" title="Permalink to this heading">¶</a></h2>
+<h3>DiscreteSpace<a class="headerlink" href="#discretespace" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="digging.problem.DiscreteSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">DiscreteSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape:</span> <span class="pre">~typing.Optional[~typing.List]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">~typing.Type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.int64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">~typing.Optional[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace" title="Permalink to this definition">¶</a></dt>
@@ -344,7 +349,7 @@ space for each dim.</p>
 
 </section>
 <section id="continuousspace">
-<h2>ContinuousSpace<a class="headerlink" href="#continuousspace" title="Permalink to this heading">¶</a></h2>
+<h3>ContinuousSpace<a class="headerlink" href="#continuousspace" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="digging.problem.ContinuousSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">ContinuousSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape:</span> <span class="pre">~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low:</span> <span class="pre">~typing.Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high:</span> <span class="pre">~typing.Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">~typing.Type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">~typing.Optional[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace" title="Permalink to this definition">¶</a></dt>
@@ -429,7 +434,7 @@ from a exponential distribution.</p>
 
 </section>
 <section id="tuplespace">
-<h2>TupleSpace<a class="headerlink" href="#tuplespace" title="Permalink to this heading">¶</a></h2>
+<h3>TupleSpace<a class="headerlink" href="#tuplespace" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="digging.problem.TupleSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">TupleSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">space_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace" title="Permalink to this definition">¶</a></dt>
@@ -516,7 +521,7 @@ from a exponential distribution.</p>
 
 </section>
 <section id="dictspace">
-<h2>DictSpace<a class="headerlink" href="#dictspace" title="Permalink to this heading">¶</a></h2>
+<h3>DictSpace<a class="headerlink" href="#dictspace" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="digging.problem.DictSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">DictSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">space_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace" title="Permalink to this definition">¶</a></dt>
@@ -578,6 +583,7 @@ from a exponential distribution.</p>
 
 </dd></dl>
 
+</section>
 </section>
 </section>
 

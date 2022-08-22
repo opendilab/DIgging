@@ -176,8 +176,22 @@
 <h3>RandomDigger<a class="headerlink" href="#randomdigger" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="digging.digger.RandomDigger">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">RandomDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">RandomDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random digger of provided searching space. The random candidates comes from the <code class="xref py py-func docutils literal notranslate"><span class="pre">sample()</span></code>
+method of the space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of engine</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the engine. If the
+value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
+Otherwise, the random state provided it is used. When set to None, an unseeded random state
+is generated. Defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </section>
