@@ -43,9 +43,9 @@ jobs:
           git branch -av
           git remote -v
           git tag
-          plantumlcli -c
-          make pdocs
-          mv ./docs/build/html ./public
+          make docs
+          mv build/html ../public
+          rm -rf build
       - name: Deploy to Github Page
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
