@@ -131,17 +131,11 @@ class DiscreteSpace(BaseSpace):
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, *self._shape), dtype=self._dtype)
 
-    def get_log_title(self, max_cols: int = 2) -> Dict:
-        if len(self) > max_cols:
-            return [str(num) for num in range(max_cols)]
-        else:
-            return [str(num) for num in range(len(self))]
+    def get_log_title(self, max_cols: int = 2) -> List:
+        return ["sample"]
 
     def get_log_data(self, data: np.ndarray, max_cols: int = 2) -> np.ndarray:
-        if len(self) > max_cols:
-            return data[:max_cols]
-        else:
-            return data
+        return data
 
     def __len__(self) -> int:
         return self._nshape.size
@@ -251,6 +245,12 @@ class ContinuousSpace(BaseSpace):
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, *self._shape), dtype=self._dtype)
 
+    def get_log_title(self, max_cols: int = 2) -> List:
+        return ["sample"]
+
+    def get_log_data(self, data: np.ndarray, max_cols: int = 2) -> np.ndarray:
+        return data
+
     def __len__(self) -> int:
         r"""
         Return the product of dim in shape.
@@ -317,6 +317,16 @@ class TupleSpace(BaseSpace):
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, len(self._spaces)), dtype=object)
 
+    def get_log_title(self, max_cols: int = 2) -> List:
+        title = list(range(len(self._spaces)))
+        return title[:max_cols]
+
+    def get_log_data(self, data: np.ndarray, max_cols: int = 2) -> np.ndarray:
+        res = []
+        for i in range(min(data.shape[0], max_cols)):
+            res.append(self._spaces[i].get_log_data(data[i], 1))
+        return res
+
     def __len__(self) -> int:
         r"""
         Get the num of spaces.
@@ -377,6 +387,15 @@ class DictSpace(BaseSpace):
 
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, len(self._spaces)), dtype=object)
+
+    def get_log_title(self, max_cols: int = 2) -> List:
+        return self._keys[:max_cols]
+
+    def get_log_data(self, data: Dict, max_cols: int = 2) -> List:
+        res = []
+        for i, k in enumerate(self._keys[:max_cols]):
+            res.append(self._spaces[i].get_log_data(data[k], 1))
+        return res
 
     def __len__(self) -> int:
         r"""

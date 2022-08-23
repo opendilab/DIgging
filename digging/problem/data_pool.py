@@ -11,7 +11,7 @@ def make_hashable(x):
             x_ = x.copy()
             x = []
             for xi in x_:
-                x += xi.flatten().tolist()
+                x += make_hashable(xi)
         else:
             x = x.flatten()
     return tuple(map(float, x))

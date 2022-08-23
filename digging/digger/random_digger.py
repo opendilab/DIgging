@@ -60,7 +60,7 @@ class RandomDigger(BaseDigger):
     @property
     def latest(self) -> Tuple[Any, float]:
         all_data = self._handler.get_all_data()
-        return {'sample': all_data[0][-1], 'score': all_data[1][-1]}
+        return {'sample': self._search_space.convert_to_sample(all_data[0][-1]), 'score': all_data[1][-1]}
 
     @property
     def best(self) -> Dict:
