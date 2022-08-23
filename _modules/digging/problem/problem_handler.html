@@ -156,7 +156,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">.space</span> <span class="kn">import</span> <span class="n">BaseSpace</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">DataPool</span>
+<span class="kn">from</span> <span class="nn">.data_pool</span> <span class="kn">import</span> <span class="n">DataPool</span>
 
 
 <div class="viewcode-block" id="ProblemHandler"><a class="viewcode-back" href="../../../api_doc/problem.html#digging.problem.ProblemHandler">[docs]</a><span class="k">class</span> <span class="nc">ProblemHandler</span><span class="p">():</span>
@@ -219,10 +219,13 @@
 
 <span class="sd">        :return Tuple[np.ndarray, float]: best sample and its score</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_score</span></div>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_sample</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_score</span><span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_pool</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_all_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_pool</span><span class="o">.</span><span class="n">data</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseSpace</span><span class="p">:</span>
@@ -237,9 +240,9 @@
             <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_score</span>
 
-<div class="viewcode-block" id="ProblemHandler.reset"><a class="viewcode-back" href="../../../api_doc/problem.html#digging.problem.ProblemHandler.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="ProblemHandler.clear"><a class="viewcode-back" href="../../../api_doc/problem.html#digging.problem.ProblemHandler.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Reset the handler. Clear data pool.</span>
+<span class="sd">        Clear the handler and data pool.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_pool</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_best_sample</span> <span class="o">=</span> <span class="kc">None</span>
