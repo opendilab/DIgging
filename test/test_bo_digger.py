@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from digging.digger import BayesianOptimizationDigger
+from digging.digger.bo_digger import BayesianOptimizationDigger
 from digging.problem import ContinuousSpace
 
 

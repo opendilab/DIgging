@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from digging.digger import RandomDigger
+from digging.digger.random_digger import RandomDigger
 from digging.problem import DiscreteSpace, ContinuousSpace, DictSpace
 
 
