@@ -4,6 +4,7 @@ from typing import Any, Callable, Dict, Tuple
 from .base_digger import BaseDigger, DIGGER_REGISTRY
 from digging.problem import ProblemHandler
 from digging.problem.space import BaseSpace
+from digging.utils.event import DiggingEvent
 
 
 @DIGGER_REGISTRY.register('random')
@@ -24,11 +25,16 @@ class RandomDigger(BaseDigger):
     def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None:  # noqa
         super().__init__(cfg, search_space, random_state)
         self._handler = ProblemHandler(search_space)
+        self._start = False
 
     def reset(self) -> None:
+        self.call_event(DiggingEvent.END)
+        self._start = False
         self._handler.clear()
 
     def search(self, target_func: Callable) -> Tuple[Any, float]:
+        self._start = True
+        self.call_event(DiggingEvent.START)
         samples = self.propose(self._cfg.num_sample)
         scores = []
         for sample in samples:
@@ -39,6 +45,9 @@ class RandomDigger(BaseDigger):
         return self.best
 
     def propose(self, sample_num: int) -> np.ndarray:
+        if not self._start:
+            self._start = True
+            self.call_event(DiggingEvent.START)
         samples = []
         for _ in range(sample_num):
             samples.append(self._search_space.sample())
@@ -46,7 +55,13 @@ class RandomDigger(BaseDigger):
 
     def update_score(self, samples: Any, scores: np.ndarray) -> None:
         self._handler.update_data(samples, scores)
+        self.call_event(DiggingEvent.STEP)
 
     @property
-    def best(self) -> Tuple[Any, float]:
+    def latest(self) -> Tuple[Any, float]:
+        all_data = self._handler.get_all_data()
+        return {'sample': all_data[0][-1], 'score': all_data[1][-1]}
+
+    @property
+    def best(self) -> Dict:
         return self._handler.provide_best()

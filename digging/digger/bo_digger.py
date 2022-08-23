@@ -52,7 +52,6 @@ class BayesianOptimizationDigger(BaseDigger):
         kappa_decay=1,
         kappa_decay_delay=0,
         xi=0.0,
-        verbose=False,
     )
 
     def __init__(
@@ -82,7 +81,6 @@ class BayesianOptimizationDigger(BaseDigger):
         self._xi = self._cfg.xi
         assert self._cfg.acquisition in ['ucb', 'ei', 'poi'], self._cfg.acquisition
         self._acquire_type = self._cfg.acquisition
-        self._verbose = self._cfg.verbose
 
     def reset(self) -> None:
         """
@@ -164,10 +162,7 @@ class BayesianOptimizationDigger(BaseDigger):
             sample = sample.reshape(1, -1)
             score = np.asarray([score])
             self.update_score(sample, score)
-            best_sample, best_score = self._handler.provide_best()
-            if not self._verbose:
-                print(" Iteration {} best score: {:.4f} .".format(iterations + 1, best_score))
-        return best_sample, best_score
+        return self.best
 
     def propose(self, sample_num: int = 1) -> np.ndarray:
         """

@@ -28,7 +28,7 @@ class TestRandomDigger:
         space = DiscreteSpace([3, 4])
         engine = RandomDigger(self.config, space)
         engine.search(target_discrete)
-        sample, score = engine.best
+        sample, score = engine.best['sample'], engine.best['score']
         assert sample.shape == (2, )
         assert 0 <= sample[0] < 3
         assert 0 <= sample[1] < 4
@@ -37,7 +37,7 @@ class TestRandomDigger:
         space = ContinuousSpace((2, 3), low=0)
         engine = RandomDigger(self.config, space)
         engine.search(target_continuous)
-        sample, score = engine.best
+        sample, score = engine.best['sample'], engine.best['score']
         assert sample.shape == (2, 3)
         assert (sample > 0).all()
 
@@ -45,6 +45,6 @@ class TestRandomDigger:
         space = DictSpace(x0=DiscreteSpace(5), x1=ContinuousSpace(5))
         engine = RandomDigger(self.config, space)
         engine.search(target_dict)
-        sample, score = engine.best
+        sample, score = engine.best['sample'], engine.best['score']
         assert sample['x0'].shape == (1, )
         assert sample['x1'].shape == (5, )

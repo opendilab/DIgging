@@ -131,6 +131,18 @@ class DiscreteSpace(BaseSpace):
     def create_empty(self) -> np.ndarray:
         return np.empty(shape=(0, *self._shape), dtype=self._dtype)
 
+    def get_log_title(self, max_cols: int = 2) -> Dict:
+        if len(self) > max_cols:
+            return [str(num) for num in range(max_cols)]
+        else:
+            return [str(num) for num in range(len(self))]
+
+    def get_log_data(self, data: np.ndarray, max_cols: int = 2) -> np.ndarray:
+        if len(self) > max_cols:
+            return data[:max_cols]
+        else:
+            return data
+
     def __len__(self) -> int:
         return self._nshape.size
 

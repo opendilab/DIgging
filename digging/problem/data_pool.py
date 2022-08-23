@@ -50,7 +50,7 @@ class DataPool():
         return len(self._data_dict)
 
     def clear(self) -> None:
-        self._all_data = np.empty(shape=(0, *self._all_data.shape[1:]), dtype=self._all_data)
+        self._all_data = np.empty(shape=(0, *self._all_data.shape[1:]), dtype=self._all_data.dtype)
         self._scores = np.empty(shape=(0, ))
         self._data_dict.clear()
 

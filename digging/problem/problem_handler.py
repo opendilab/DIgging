@@ -2,7 +2,7 @@ import numpy as np
 from typing import Any, Callable, List, Tuple
 
 from .space import BaseSpace
-from .utils import DataPool
+from .data_pool import DataPool
 
 
 class ProblemHandler():
@@ -65,10 +65,13 @@ class ProblemHandler():
 
         :return Tuple[np.ndarray, float]: best sample and its score
         """
-        return self._best_sample, self._best_score
+        return {'sample': self._best_sample, 'score': self._best_score}
 
-    def __len__(self) -> int:
+    def __len__(self):
         return len(self._data_pool)
+
+    def get_all_data(self) -> Tuple[np.ndarray, np.ndarray]:
+        return self._data_pool.data
 
     @property
     def space(self) -> BaseSpace:
@@ -83,9 +86,9 @@ class ProblemHandler():
             return -np.inf
         return self._best_score
 
-    def reset(self) -> None:
+    def clear(self) -> None:
         """
-        Reset the handler. Clear data pool.
+        Clear the handler and data pool.
         """
         self._data_pool.clear()
         self._best_sample = None
