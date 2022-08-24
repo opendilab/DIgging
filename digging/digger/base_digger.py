@@ -80,10 +80,13 @@ class BaseDigger(ABC):
             raise KeyError(subscriber)
 
     def apply_logger(self, logger_name: str, *args, **kwargs) -> None:
-        # if not any([subs for subs in self._events.values()]):
         _logger = get_logger(logger_name)(*args, **kwargs)
         for event in DiggingEvent.__members__.values():
             self.subscribe(event, _logger)
+
+    def _apply_default_logger(self) -> None:
+        if not any([subs for subs in self._events.values()]):
+            self.apply_logger('screen', 2)
 
     def call_event(self, event: EventType) -> None:
         for _, callback in self._events[event].items():

@@ -1415,3 +1415,5 @@ formatted_*
 *.puml.svg
 default*
 events.*
+
+!*logger.py

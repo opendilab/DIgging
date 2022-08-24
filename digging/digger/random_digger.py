@@ -33,6 +33,7 @@ class RandomDigger(BaseDigger):
         self._handler.clear()
 
     def search(self, target_func: Callable) -> Tuple[Any, float]:
+        self._apply_default_logger()
         self._start = True
         self.call_event(DiggingEvent.START)
         samples = self.propose(self._cfg.num_sample)
