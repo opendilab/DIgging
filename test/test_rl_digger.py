@@ -22,6 +22,16 @@ class TestPPODigger:
         res = digger.search(target_discrete)
         print(res)
 
+    def test_continuous(self, make_rl_digging_config):
+        cfg = make_rl_digging_config
+        cfg.env['obs_shape'] = (2,)
+        cfg.policy['action_space'] = 'continuous'
+        space = ContinuousSpace(2, low=0, high=1, dtype=np.float32)
+        model = RNNVACModel(2, 1, 2, critic_head_hidden_size=128, action_space='continuous')
+        engine = PPODigger(cfg, space, model)
+        res = engine.search(target_discrete)
+        print(res)
+
 
 @pytest.mark.unittest
 class TestPPOOffPolicyDigger:
