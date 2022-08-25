@@ -57,3 +57,9 @@ class DataPool():
     @property
     def data(self) -> Tuple[np.ndarray, np.ndarray]:
         return self._all_data, self._scores
+
+    @property
+    def best(self) -> Tuple[np.ndarray, float]:
+        if self._best_idx is None:
+            raise ValueError("sample pool is empty!")
+        return self._all_data[self._best_idx], self._scores[self._best_idx]

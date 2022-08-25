@@ -22,7 +22,7 @@ class TestProblemHandler:
         assert len(handler) == 1
         scores = handler.get_cached_score([sample])
         assert scores[0] == -0.5
-    
+
     def test_complex(self, make_tuple_in_dict_space, make_tuple_in_dict_target_function):
         space = make_tuple_in_dict_space
         target_func = make_tuple_in_dict_target_function
