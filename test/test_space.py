@@ -62,40 +62,35 @@ class TestContinuousSpace():
 
 @pytest.mark.unittest
 class TestTupleSpace():
-    space_a = DiscreteSpace([2, 4])
-    space_b = ContinuousSpace((3, 3))
-    space_1 = TupleSpace(space_a, space_b)
 
-    def test_common(self):
-        assert len(self.space_1) == 2
-        assert self.space_1.shape[0] == (2, ) and (self.space_1.shape[1] == (3, 3)).all()
-        assert (self.space_1.nshape[0] == (2, 4)).all() and (self.space_1.nshape[1] == (3, 3)).all()
+    def test_common(self, make_tuple_space):
+        space = make_tuple_space
+        assert len(space) == 2
+        assert space.shape[0] == (2, ) and (space.shape[1] == (3, 3)).all()
+        assert (space.nshape[0] == (2, 4)).all() and (space.nshape[1] == (3, 3)).all()
 
-        x = self.space_1.sample()
+        x = space.sample()
         assert x[0].shape == (2, ) and x[1].shape == (3, 3)
-        y = self.space_1.convert_to_sample(self.space_1.convert_to_data(x))
+        y = space.convert_to_sample(space.convert_to_data(x))
         assert (x[0] == y[0]).all() and (x[1] == y[1]).all()
 
-    space_c = ContinuousSpace(5, np.array([-5, -4, -3, -2, -1]), 0)
-    space_2 = TupleSpace(space_1, space_c)
-
-    def test_tuple_in_tuple(self):
-        assert len(self.space_2) == 2
-        assert self.space_2.shape[0][0] == (2, ) and (self.space_2.shape[0][1] == (3, 3)).all()
-        assert self.space_2.shape[1] == (5)
-        x = self.space_2.sample()
-        y = self.space_2.convert_to_sample(self.space_2.convert_to_data(x))
+    def test_tuple_in_tuple(self, make_tuple_in_tuple_space):
+        space = make_tuple_in_tuple_space
+        assert len(space) == 2
+        assert space.shape[0][0] == (2, ) and (space.shape[0][1] == (3, 3)).all()
+        assert space.shape[1] == (5)
+        x = space.sample()
+        y = space.convert_to_sample(space.convert_to_data(x))
         assert (x[0][0] == y[0][0]).all()
         assert (x[0][1] == y[0][1]).all()
         assert (x[1] == y[1]).all()
 
-    space_d = ContinuousSpace((2, 3))
-    space_3 = TupleSpace(space_a, space_d)
 
-    def test_same_shape(self):
-        assert len(self.space_3) == 2
-        x = self.space_3.sample()
-        y = self.space_3.convert_to_sample(self.space_3.convert_to_data(x))
+    def test_same_shape(self, make_same_shape_tuple_space):
+        space = make_same_shape_tuple_space
+        assert len(space) == 2
+        x = space.sample()
+        y = space.convert_to_sample(space.convert_to_data(x))
         assert (x[0] == y[0]).all()
         assert (x[1] == y[1]).all()
 
@@ -103,12 +98,8 @@ class TestTupleSpace():
 @pytest.mark.unittest
 class TestDictSpace():
 
-    def test_tuple_in_dict(self):
-        space_1 = DiscreteSpace([2, 4])
-        space_a = ContinuousSpace((3, 3))
-        space_b = DiscreteSpace([5], dtype=np.uint8)
-        space_2 = TupleSpace(space_a, space_b)
-        space = DictSpace(discrete=space_1, tuple=space_2)
+    def test_tuple_in_dict(self, make_tuple_in_dict_space):
+        space = make_tuple_in_dict_space
         x = space.sample()
         assert set(x.keys()) == set(('discrete', 'tuple'))
         assert x['discrete'].shape == (2, )
@@ -119,3 +110,17 @@ class TestDictSpace():
         assert (x['discrete'] == y['discrete']).all()
         assert (x['tuple'][0] == y['tuple'][0]).all()
         assert (x['tuple'][1] == y['tuple'][1]).all()
+
+
+    def test_dict_in_dict(self, make_dict_in_dict_space):
+        space = make_dict_in_dict_space
+        x = space.sample()
+        assert set(x.keys()) == set(('discrete', 'dict'))
+        assert x['discrete'].shape == (1, )
+        assert len(x['dict']) == 2
+        assert x['dict']['b'].shape == (3, 3)
+        assert x['dict']['a'].dtype == np.int64
+        y = space.convert_to_sample(space.convert_to_data(x))
+        assert (x['discrete'] == y['discrete']).all()
+        assert (x['dict']['a'] == y['dict']['a']).all()
+        assert (x['dict']['b'] == y['dict']['b']).all()
