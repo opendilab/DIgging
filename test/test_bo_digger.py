@@ -10,7 +10,7 @@ def target_function(x):
 
 
 @pytest.mark.unittest
-class TestBOEngine:
+class TestBODigger:
 
     config = dict()
     space = ContinuousSpace(shape=5, low=0, high=1)

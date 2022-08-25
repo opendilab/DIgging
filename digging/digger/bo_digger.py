@@ -38,8 +38,8 @@ class BayesianOptimizationDigger(BaseDigger):
     targets using bayesian optimization.
 
     :param Dict cfg: user config
-    :param BaseSpace search_space: searching space of engine
-    :param Any random_state: the random state to set the random seed or state of the engine. If the
+    :param BaseSpace search_space: searching space of digger
+    :param Any random_state: the random state to set the random seed or state of the digger. If the
         value is an integer, it is used as the seed for creating a ``numpy.random.RandomState``.
         Otherwise, the random state provided it is used. When set to None, an unseeded random state
         is generated. Defaults to None
@@ -142,7 +142,7 @@ class BayesianOptimizationDigger(BaseDigger):
 
     def search(self, target_func: Callable) -> Tuple[np.ndarray, float]:
         r"""
-        The entire digging pipeline for BO. It will iteractively propose samples and get scores according to
+        The complete digging pipeline of BO. It will iteractively propose samples and get scores according to
         config, and returns best one together with its score. It will apply default logger if no any loggers
         subscribed already.
 
@@ -150,8 +150,6 @@ class BayesianOptimizationDigger(BaseDigger):
         :return Tuple[np.ndarray, float]: the best sample and score
         """
         self._apply_default_logger()
-        self.call_event(DiggingEvent.START)
-        self._start = True
         init_point = self._init_point
         if len(self._queue) == 0 and len(self._handler) == 0:
             init_point = max(init_point, 1)
@@ -167,7 +165,7 @@ class BayesianOptimizationDigger(BaseDigger):
                 sample = self.propose()[0]
                 iterations += 1
             score = target_func(sample)
-            sample = sample.reshape(1, -1)
+            sample = np.asarray([sample])
             score = np.asarray([score])
             self.update_score(sample, score)
         return self.best
