@@ -8,8 +8,8 @@
 [![Docs](https://github.com/opendilab/digging/actions/workflows/doc.yml/badge.svg)](https://github.com/opendilab/DIgging/actions/workflows/doc.yml?query=workflow%3A%22Docs+Deploy%22)
 [![Package](https://github.com/opendilab/digging/actions/workflows/release.yml/badge.svg)](https://github.com/opendilab/DIgging/actions/workflows/release.yml?query=workflow%3A%22Package+Release%22)
 [![codecov](https://img.shields.io/codecov/c/github/opendilab/digging)](https://app.codecov.io/gh/opendilab/digging)
-![Loc](https://img.shields.io/endpoint?url=https://gist.github.com/RobinC94/7f38f27fb3b34d4bf4d2dbcfcc73d981#file-loc-json)
-![Comments](https://img.shields.io/endpoint?url=https://gist.github.com/RobinC94/7f38f27fb3b34d4bf4d2dbcfcc73d981#file-comments-json)
+![Loc](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/RobinC94/7f38f27fb3b34d4bf4d2dbcfcc73d981/raw/loc.json)
+![Comments](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/RobinC94/7f38f27fb3b34d4bf4d2dbcfcc73d981/raw/comments.json)
 
 ![GitHub Org's stars](https://img.shields.io/github/stars/opendilab)
 [![GitHub stars](https://img.shields.io/github/stars/opendilab/digging)](https://github.com/opendilan/digging/stargazers)
