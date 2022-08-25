@@ -34,7 +34,6 @@ class TestProblemHandler:
         scores = handler.get_cached_score([sample])
         assert scores[0] < 0
 
-
     def test_best(self, make_dict_target_function):
         target_func = make_dict_target_function
         space = ContinuousSpace(1)
@@ -42,5 +41,5 @@ class TestProblemHandler:
         x = np.asarray([[0.2], [0.5], [1]], dtype=np.float32)
         scores = [target_func({'x': xi, 'y': None}) for xi in x]
         handler.update_data(x, np.asarray(scores))
-        best_dict = handler.provide_best()
+        best_dict = handler.best
         assert best_dict['score'] == 0

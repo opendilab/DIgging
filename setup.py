@@ -26,7 +26,7 @@ setup(
     python_requires='>=3.6',
     install_requires=[
         'torch<=1.10',
-        'di-engine>=0.3',
+        'di-engine<0.4.1',
         'scikit-learn>=0.18.0',
         'protobuf<=3.20.1',  # for di-engine 0.3.1 bug
     ],

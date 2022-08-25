@@ -10,7 +10,7 @@ from ding.utils import deep_merge_dicts
 
 @DIGGER_REGISTRY.register('ppo_rl')
 class PPODigger(RLDigger):
-    """
+    r"""
     RL searching digger of on-policy PPO algorithm.
 
     :param Dict cfg: user config
@@ -38,7 +38,7 @@ class PPODigger(RLDigger):
 
 @DIGGER_REGISTRY.register('ppo_offpolicy_rl')
 class PPOOffPolicyDigger(RLDigger):
-    """
+    r"""
     RL searching digger of off-policy PPO algorithm.
 
     :param Dict cfg: user config

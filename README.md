@@ -58,6 +58,56 @@ It will automatically install **DI-engine** together with its requirement packag
 
 ## Quick start
 
+**DIgging** defines core algorithm and searching methods as `Digger`. You can define a `Digger` with a searching `Space`,
+and can be modified by a config dict.
+**DIgging** provides two kinds of searching pipeline for a target function. Thet are listed as follow.
+
+1. Interactive Procedure
+
+It is done by calling `Digger`'s `propose` and `update_score` method, in which you can flexibly define the searching
+procedures. You can call the `best` property at any time to see the currently best candidate sample and its score.
+Here's an simple example:
+
+```python
+def target_func(x):
+    ...
+	return score
+
+space = YourSpace(shape=(...))
+digger = YourDigger(config, space)
+
+for i in range(max_iterations):
+    samples = digger.propose(sample_num)
+    scores = [target_func(x) for x in samples]
+    digger.update_score(samples, scores)
+
+print(digger.best)
+```
+
+2. Functional Procedure
+
+It is done by calling the `search` method of `Digger`, with target function provided as input. The digger will
+autometically search the best samples of the target according to the config. Here's an example:
+
+```python
+def target_func(x):
+    ...
+    return score
+
+space = YourSpace(shape=(...))
+digger = YourDigger(config, space)
+
+digger.search(target_func)
+
+print(digger.best)
+```
+
+## Digging Method Zoo
+
+- Genetic Algorithm
+- Bayesian Optimization
+- RL
+
 ## License
 
 **DIgging** is released under the Apache 2.0 license.

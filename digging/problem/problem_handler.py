@@ -59,7 +59,8 @@ class ProblemHandler():
         data_array = self._convert_to_data(samples)
         return self._data_pool.get_scores(data_array)
 
-    def provide_best(self) -> Tuple[Any, float]:
+    @property
+    def best(self) -> Tuple[Any, float]:
         r"""
         Get the currently best sample and its score in the data pool.
 

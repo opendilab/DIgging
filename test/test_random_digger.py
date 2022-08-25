@@ -38,14 +38,16 @@ class TestRandomDigger:
         samples = np.asarray([[4], [0]])
         scores = np.asarray([target_discrete(s) for s in samples])
         digger.update_score(samples, scores)
-        assert digger.best['sample'] == [4,]
-        assert digger.best['score'] == -0.25
+        best = digger.provide_best()
+        assert best['sample'] == [4, ]
+        assert best['score'] == -0.25
 
     def test_discrete(self):
         space = DiscreteSpace([3, 4])
         digger = RandomDigger(self.config, space)
         digger.search(target_discrete)
-        sample, score = digger.best['sample'], digger.best['score']
+        best = digger.provide_best()
+        sample, score = best['sample'], best['score']
         assert sample.shape == (2, )
         assert 0 <= sample[0] < 3
         assert 0 <= sample[1] < 4
@@ -54,7 +56,8 @@ class TestRandomDigger:
         space = ContinuousSpace((2, 3), low=0)
         digger = RandomDigger(self.config, space)
         digger.search(target_continuous)
-        sample, score = digger.best['sample'], digger.best['score']
+        best = digger.provide_best()
+        sample, score = best['sample'], best['score']
         assert sample.shape == (2, 3)
         assert (sample > 0).all()
 
@@ -62,6 +65,7 @@ class TestRandomDigger:
         space = DictSpace(x0=DiscreteSpace(5), x1=ContinuousSpace(5))
         digger = RandomDigger(self.config, space)
         digger.search(target_dict)
-        sample, score = digger.best['sample'], digger.best['score']
+        best = digger.provide_best()
+        sample, score = best['sample'], best['score']
         assert sample['x0'].shape == (1, )
         assert sample['x1'].shape == (5, )

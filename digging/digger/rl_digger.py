@@ -9,6 +9,17 @@ from ding.worker import BaseLearner, SampleSerialCollector
 
 
 class RLDigger(BaseDigger):
+    """
+    Base class of all RL searching diggers. It defines a standard searching pipeline of RL
+    algorithms with provided RL policies and workers i.e. ``collector`` and ``replay_buffer``.
+    It uses a problem relevant environment to handle the interactions of RL.
+
+    :param Dict cfg: user config
+    :param BaseSpace search_space: searching space of digger
+    :param Policy policy: RL policy class in ``ding``
+    :param Any replay_buffer: replay buffer of RL. If `None``, the RL will be on-policy,
+        defaults to None
+    """
 
     config = dict(
         samples_per_iteration=128,
@@ -41,12 +52,23 @@ class RLDigger(BaseDigger):
         self._best = None
 
     def reset(self) -> None:
+        r"""
+        Reset RL digger by clear the replay buffer and delete collector.
+        """
         self.call_event(DiggingEvent.END)
         self._start = False
+        self._collector = None
         if self._replay_buffer is not None:
             self._replay_buffer.clear()
 
     def propose(self, sample_num: int) -> Any:
+        r"""
+        Propose ``sample_num`` numbers of sample candidates by running ``collector`` to interact with
+        the environment.
+
+        :param int sample_num: number of samples, defaults to 1
+        :return Any: sample candidates
+        """
         assert self._collector is not None, "no collector in digger"
         if not self._start:
             self._start = True
@@ -55,7 +77,7 @@ class RLDigger(BaseDigger):
         return new_data
 
     def search(self, target_func: Callable) -> Tuple[np.ndarray, int]:
-        """
+        r"""
         The complete digging pipeline of RL. It will make a problem relevant environment according to target
         function and run the propose-update loops to generate samples and update models. It returns best sample
         together with its score.
@@ -74,14 +96,13 @@ class RLDigger(BaseDigger):
             new_data = self.propose(self._samples_per_iteration)
             self.update_score(new_data)
             self._best = env.best
-        return self.best
+        return self.provide_best()
 
     def update_score(self, train_data: List) -> None:
-        """
+        r"""
         Update a set of samples and scores by running ``learner`` to update the RL model according to config.
 
-        :param np.ndarray sequences: samples
-        :param np.ndarray scores: scores
+        :param List train_data: the new samples.
         """
         if self._replay_buffer is not None:
             self._replay_buffer.push(train_data, cur_collector_envstep=self._collector.envstep)
@@ -94,9 +115,8 @@ class RLDigger(BaseDigger):
             self._learner.train(train_data, self._collector.envstep)
         self.call_event(DiggingEvent.STEP)
 
-    @property
-    def best(self) -> Dict[str, Any]:
-        """
+    def provide_best(self) -> Dict[str, Any]:
+        r"""
         Return the current best sample and score stored in data pool.
         """
         return self._best
