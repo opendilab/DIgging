@@ -24,7 +24,7 @@ class TestRandomDigger:
 
     config = dict()
 
-    def test_propose(self):
+    def test_common(self):
         space = DiscreteSpace(5)
         digger = RandomDigger(self.config, space)
         assert digger.space == space
@@ -35,10 +35,6 @@ class TestRandomDigger:
         assert samples.shape == (10, 1)
         digger.reset()
         assert not digger._start
-
-    def test_best(self):
-        space = DiscreteSpace(5)
-        digger = RandomDigger(self.config, space)
         samples = np.asarray([[4], [0]])
         scores = np.asarray([target_discrete(s) for s in samples])
         digger.update_score(samples, scores)

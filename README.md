@@ -1,5 +1,19 @@
 # DIgging
 
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fopendilab)](https://twitter.com/opendilab)
+[![Code Style](https://github.com/opendilab/digging/actions/workflows/style.yml/badge.svg)]()
+[![Code Test](https://github.com/opendilab/digging/actions/workflows/test.yml/badge.svg)](https://github.com/opendilab/DIgging/actions?query=workflow%3A%22Code+Test%22)
+[![Docs deploy](https://github.com/opendilab/digging/actions/workflows/doc.yml/badge.svg)](https://github.com/opendilab/DIgging/actions/workflows/doc.yml?query=workflow%3A%22Code+Test%22)
+[![Package Release](https://github.com/HansBug/hbayes/workflows/Package%20Release/badge.svg)](https://github.com/opendilab/DIgging/actions/workflows/release.yml?query=workflow%3A%22Code+Test%22)
+[![codecov](https://img.shields.io/codecov/c/github/opendilab/digging)](https://img.shields.io/codecov/c/github/opendilab/digging)
+
+![GitHub Org's stars](https://img.shields.io/github/stars/opendilab)
+[![GitHub stars](https://img.shields.io/github/stars/opendilab/digging)](https://github.com/opendilan/digging/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/opendilab/digging)](https://github.com/opendilab/digging/network)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/opendilab/digging)
+[![GitHub license](https://img.shields.io/github/license/opendilab/digging)](https://github.com/opendilab/digging/blob/master/LICENSE)
+
+
 DIgging -- Decision Intelligence for digging better parameters in target function/environments.
 
 
