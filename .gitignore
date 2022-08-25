@@ -1417,3 +1417,4 @@ default*
 events.*
 
 !*logger.py
+!*DIgging_*.png
