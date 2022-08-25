@@ -202,12 +202,6 @@ is generated. Defaults to None</p></li>
 </dd>
 </dl>
 <dl class="py property">
-<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.best">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.best" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current best sample and score stored in data pool.</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.latest">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.latest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the latest sample and score updated into data pool.</p>
@@ -225,6 +219,12 @@ is generated. Defaults to None</p></li>
 <dd class="field-even"><p>sample candidates</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -288,12 +288,6 @@ is generated. Defaults to None</p></li>
 </dd>
 </dl>
 <dl class="py property">
-<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.best">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.best" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current best sample and score stored in data pool.</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.latest">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.latest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the latest sample and score updated into data pool.</p>
@@ -311,6 +305,12 @@ is generated. Defaults to None</p></li>
 <dd class="field-even"><p>sample candidates</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -377,15 +377,15 @@ is generated. Defaults to None</p></li>
 </dd>
 </dl>
 <dl class="py property">
-<dt class="sig sig-object py" id="digging.digger.RandomDigger.best">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.RandomDigger.best" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current best sample and score stored in data pool.</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="digging.digger.RandomDigger.latest">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.RandomDigger.latest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the latest sample and score updated into data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
 </dd></dl>
 
 <dl class="py method">

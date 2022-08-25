@@ -191,6 +191,17 @@ in a standard array type.</p>
 </dd>
 </dl>
 <dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.best">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.problem.ProblemHandler.best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the currently best sample and its score in the data pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
+<dd class="field-odd"><p>best sample and its score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="digging.problem.ProblemHandler.best_score">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#digging.problem.ProblemHandler.best_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the currently best score only.</p>
@@ -213,17 +224,6 @@ before. Otherwise the score will be <cite>None</cite>.</p>
 </dd>
 <dt class="field-even">Return List<span class="colon">:</span></dt>
 <dd class="field-even"><p>Scores of all provided samples stored as <cite>List</cite> for there will be <cite>None</cite> elements.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="digging.problem.ProblemHandler.provide_best">
-<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_handler.html#ProblemHandler.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemHandler.provide_best" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the currently best sample and its score in the data pool.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
-<dd class="field-odd"><p>best sample and its score</p>
 </dd>
 </dl>
 </dd></dl>
