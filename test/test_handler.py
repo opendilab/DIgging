@@ -1,8 +1,7 @@
 import pytest
 import numpy as np
 
-from digging.problem import ProblemHandler, ContinuousSpace, DiscreteSpace
-from digging.problem.space import DictSpace
+from digging.problem import ProblemHandler, ContinuousSpace
 
 
 @pytest.mark.unittest

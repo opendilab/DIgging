@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from digging.problem import DiscreteSpace, ContinuousSpace, TupleSpace, DictSpace
+from digging.problem import DiscreteSpace, ContinuousSpace
 
 
 @pytest.mark.unittest
@@ -97,6 +97,16 @@ class TestTupleSpace():
 
 @pytest.mark.unittest
 class TestDictSpace():
+
+    def test_common(self, make_dict_space):
+        space = make_dict_space
+        x = space.sample()
+        assert set(x.keys()) == set(('x', 'y'))
+        assert x['x'].shape == (2, )
+        assert x['y'].shape == (2, 3)
+        y = space.convert_to_sample(space.convert_to_data(x))
+        assert (x['x'] == y['x']).all()
+        assert (x['y'] == y['y']).all()
 
     def test_tuple_in_dict(self, make_tuple_in_dict_space):
         space = make_tuple_in_dict_space
