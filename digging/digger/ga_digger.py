@@ -9,7 +9,7 @@ from digging.utils.event import DiggingEvent
 
 @DIGGER_REGISTRY.register('ga')
 class GeneticAlgorithmDigger(BaseDigger):
-    """
+    r"""
     The Genetic Algorithm digger. The digger is usually used in discrete space.
 
     :param Dict cfg: user config
