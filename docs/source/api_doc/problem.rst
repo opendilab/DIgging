@@ -11,6 +11,13 @@ ProblemHandler
 .. autoclass:: ProblemHandler
     :members:
 
+
+ProblemEnv
+============
+.. autoclass:: ProblemEnv
+    :members:
+
+
 Spaces
 ===================
 

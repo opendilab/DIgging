@@ -34,6 +34,7 @@ DIgging -- Decision Intelligence for digging better parameters in target functio
   - [Outlines](#outlines)
   - [Installation](#installation)
   - [Quick start](#quick-start)
+  - [Digging Method Zoo](#digging-method-zoo)
   - [License](#license)
 
 ## Installation
@@ -65,7 +66,7 @@ and can be modified by a config dict.
 1. Interactive Procedure
 
 It is done by calling `Digger`'s `propose` and `update_score` method, in which you can flexibly define the searching
-procedures. You can call the `best` property at any time to see the currently best candidate sample and its score.
+procedures. You can call the `provide_best` method at any time to see the currently best candidate sample and its score.
 Here's an simple example:
 
 ```python
@@ -81,13 +82,13 @@ for i in range(max_iterations):
     scores = [target_func(x) for x in samples]
     digger.update_score(samples, scores)
 
-print(digger.best)
+print(digger.provide_best())
 ```
 
 2. Functional Procedure
 
 It is done by calling the `search` method of `Digger`, with target function provided as input. The digger will
-autometically search the best samples of the target according to the config. Here's an example:
+automatically search the best samples of the target according to the config. Here's an example:
 
 ```python
 def target_func(x):
@@ -99,7 +100,29 @@ digger = YourDigger(config, space)
 
 digger.search(target_func)
 
-print(digger.best)
+print(digger.provide_best())
+```
+
+3. Reinforcement Learning Procedure
+
+When using a Reinforcement Learning `Digger`, users need to provide an RL `Policy` defined in **DI-engine** form,
+and some other RL workers in **DI-engine** such as `Collector`, `Learner`, `ReplayBuffer` are supposed to be used
+in the `Digger`. In the searching procedure, a target `Env` is used instead of a function. So we suggest to use
+the `search` method to if the user is not familiar with the RL pipeline of **DI-engine**. Here's an example.
+
+```python
+def target_func(x):
+    ...
+    return score
+
+rl_config = EasyDict(dict(...))
+space = YourSearchSpace(shape=(...))
+policy = YourPolicy(rl_config.policy, ...)
+digger = RLDigger(rl_cfg, space, policy)
+
+digger.search(target_func)
+
+print(digger.provide_best())
 ```
 
 ## Digging Method Zoo
