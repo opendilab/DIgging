@@ -23,10 +23,10 @@ class TestBODigger:
             for sample in ans:
                 scores.append(target_function(sample))
             digger.update_score(ans, np.asarray(scores))
-        print(digger.best)
+        print(digger.provide_best())
 
     def test_search(self):
         config = {'max_iterations': 10}
         digger = BayesianOptimizationDigger(config, self.space)
         digger.search(target_function)
-        print(digger.best)
+        print(digger.provide_best())

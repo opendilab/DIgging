@@ -19,7 +19,7 @@ class TestGADigger:
     def test_search(self):
         digger = GeneticAlgorithmDigger(self.config, self.space)
         digger.search(target_function)
-        print(digger.best)
+        print(digger.provide_best())
 
     def test_iteration(self):
         digger = GeneticAlgorithmDigger(self.config, self.space)
@@ -30,4 +30,4 @@ class TestGADigger:
             for seq in ans:
                 scores.append(target_function(seq))
             digger.update_score(ans, np.array(scores))
-        print(digger.best)
+        print(digger.provide_best())

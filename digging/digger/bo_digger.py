@@ -168,7 +168,7 @@ class BayesianOptimizationDigger(BaseDigger):
             sample = np.asarray([sample])
             score = np.asarray([score])
             self.update_score(sample, score)
-        return self.best
+        return self.provide_best()
 
     def propose(self, sample_num: int = 1) -> np.ndarray:
         r"""
@@ -210,9 +210,8 @@ class BayesianOptimizationDigger(BaseDigger):
         all_data = self._handler.get_all_data()
         return {'sample': self._search_space.convert_to_sample(all_data[0][-1]), 'score': all_data[1][-1]}
 
-    @property
-    def best(self) -> Dict[str, Any]:
+    def provide_best(self) -> Dict[str, Any]:
         r"""
         Return the current best sample and score stored in data pool.
         """
-        return self._handler.provide_best()
+        return self._handler.best

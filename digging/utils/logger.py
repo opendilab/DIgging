@@ -30,7 +30,7 @@ class StepTracker():
         if event in {DiggingEvent.STEP, DiggingEvent.SKIP}:
             self._iterations += 1
 
-            current_best = digger.best
+            current_best = digger.provide_best()
             if current_best and (self._previous_best_score is None
                                  or current_best['score'] > self._previous_best_score):
                 self._previous_best_sample = current_best['sample']
@@ -125,7 +125,7 @@ class ScreenLogger(StepTracker):
         return "| " + " | ".join(cells) + " |"
 
     def _step(self, digger):
-        res = digger.best
+        res = digger.provide_best()
         return self._row(res['score'], digger.space.get_log_data(res['sample'], self._default_data_max_col))
 
     def _skip(self):
@@ -147,10 +147,11 @@ class ScreenLogger(StepTracker):
         return ("=" * self._header_length) + '\n' + line + "\n" + ("-" * self._header_length)
 
     def _is_new_best(self, digger):
-        if digger.best:
+        best = digger.provide_best()
+        if best:
             if self._previous_best_score is None:
                 return True
-            return digger.best["score"] > self._previous_best_score
+            return best["score"] > self._previous_best_score
         else:
             return False
 

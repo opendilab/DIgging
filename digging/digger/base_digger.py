@@ -50,8 +50,8 @@ class BaseDigger(ABC):
     def update_score(self, samples: np.ndarray, scores: np.ndarray) -> None:
         raise NotImplementedError
 
-    @abstractproperty
-    def best(self) -> Tuple[Any, float]:
+    @abstractmethod
+    def provide_best(self) -> Tuple[Any, float]:
         raise NotImplementedError
 
     @classmethod

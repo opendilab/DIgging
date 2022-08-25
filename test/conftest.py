@@ -1,5 +1,6 @@
 import pytest
 import numpy as np
+from easydict import EasyDict
 
 from digging.problem import DiscreteSpace, ContinuousSpace, TupleSpace, DictSpace
 
@@ -76,3 +77,27 @@ def make_dict_in_dict_space():
     space_2 = DiscreteSpace([5], dtype=np.uint8)
     space = DictSpace(dict=space_1, discrete=space_2)
     return space
+
+
+@pytest.fixture(scope='class')
+def make_rl_digging_config():
+    config = dict(
+        samples_per_iteration=64,
+        max_iterations=20,
+        env=dict(batch_num=2, empty_obs=True),
+        policy=dict(
+            model=dict(),
+            collect=dict(collector=dict(collector=dict(collect_print_freq=1e8, ), ), ),
+            learn=dict(
+                learner=dict(
+                    hook=dict(
+                        load_ckpt_before_run='',
+                        log_show_after_iter=1e8,
+                        save_ckpt_after_iter=1e8,
+                        save_ckpt_after_run=False,
+                    ),
+                ),
+            ),
+        ),
+    )
+    return EasyDict(config)
