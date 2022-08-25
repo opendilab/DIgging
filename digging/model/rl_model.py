@@ -8,7 +8,7 @@ from .rnn_model import LSTMSeqModel, GRUSeqModel
 
 class RNNDiscretePGModel(nn.Module):
     """
-    Policy Gradient model with RNN encoder for RL searching engines on discrete searching space.
+    Policy Gradient model with RNN encoder for RL diggers on discrete searching space.
     """
 
     def __init__(
@@ -65,7 +65,7 @@ class RNNDiscretePGModel(nn.Module):
 
 class RNNContinuousPGModel(nn.Module):
     """
-    Policy Gradient model with RNN encoder for RL searching engines on continuous searching space.
+    Policy Gradient model with RNN encoder for RL diggers on continuous searching space.
     """
 
     def __init__(
@@ -130,7 +130,7 @@ class RNNContinuousPGModel(nn.Module):
 
 class RNNVACModel(nn.Module):
     """
-    PPO model with RNN encoder for RL searching engines.
+    PPO model with RNN encoder for RL diggers.
     """
 
     mode = ['compute_actor', 'compute_critic', 'compute_actor_critic']

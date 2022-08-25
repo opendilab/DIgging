@@ -10,7 +10,7 @@ from ding.worker import BaseLearner, SampleSerialCollector
 
 class RLDigger(BaseDigger):
     """
-    Base class of all RL searching diggers. It defines a standard searching pipeline of RL
+    Base class of all RL diggers. It defines a standard searching pipeline of RL
     algorithms with provided RL policies and workers i.e. ``collector`` and ``replay_buffer``.
     It uses a problem relevant environment to handle the interactions of RL.
 
