@@ -6,6 +6,9 @@
 Welcome to DIgging's documentation!
 ====================================
 
+.. figure:: ../figs/digging_banner.png
+   :alt: DIgging
+
 **DIgging** is a Decision Intelligence heuristic searching and optimization platform.
 It provides easy-to-use searching algorithms such as **Genetic Algorithm**, **Bayesian Optimization** and
 **Reinforcement Learning** etc. It can be used to handle combinatorial optimization problems and
@@ -20,7 +23,6 @@ non-gradient search problems.
    :caption: Contents:
 
    api_doc/index
-
 
 Indices and tables
 ==================
