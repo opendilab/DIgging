@@ -97,6 +97,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#bayesianoptimizationdigger">BayesianOptimizationDigger</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#evolution-algorithms">Evolution Algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geneticalgorithmdigger">GeneticAlgorithmDigger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reinforcement-learning">Reinforcement Learning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#others">Others</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#randomdigger">RandomDigger</a></li>
 </ul>
@@ -188,8 +193,8 @@ targets using bayesian optimization.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
-<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of engine</p></li>
-<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the engine. If the
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
 value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
 Otherwise, the random state provided it is used. When set to None, an unseeded random state
 is generated. Defaults to None</p></li>
@@ -231,7 +236,7 @@ is generated. Defaults to None</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.search">
 <span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.search" title="Permalink to this definition">¶</a></dt>
-<dd><p>The entire digging pipeline for BO. It will iteractively propose samples and get scores according to
+<dd><p>The complete digging pipeline of BO. It will iteractively propose samples and get scores according to
 config, and returns best one together with its score. It will apply default logger if no any loggers
 subscribed already.</p>
 <dl class="field-list simple">
@@ -262,6 +267,94 @@ subscribed already.</p>
 
 </section>
 </section>
+<section id="evolution-algorithms">
+<h2>Evolution Algorithms<a class="headerlink" href="#evolution-algorithms" title="Permalink to this heading">¶</a></h2>
+<section id="geneticalgorithmdigger">
+<h3>GeneticAlgorithmDigger<a class="headerlink" href="#geneticalgorithmdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">GeneticAlgorithmDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Genetic Algorithm digger. The digger is usually used in discrete space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
+value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
+Otherwise, the random state provided it is used. When set to None, an unseeded random state
+is generated. Defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.best">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.latest">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest sample and score updated into data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.propose">
+<span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidate_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.propose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.propose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propose <code class="docutils literal notranslate"><span class="pre">sample_num</span></code> numbers of sample candidates by getting a new generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_num</strong> (<em>int</em>) – number of samples, defaults to 1</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>sample candidates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the digger and clear all current generations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>The complete digging pipeline of GA. The first generation is randomly generated and the following
+generations is proposed by standard Genetic Algorithms. It returns best sample together with its score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_func</strong> (<em>Callable</em>) – target function</p>
+</dd>
+<dt class="field-even">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
+<dd class="field-even"><p>the best sample and score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.update_score">
+<span class="sig-name descname"><span class="pre">update_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.update_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.update_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a set of samples and scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequences</strong> (<em>np.ndarray</em>) – samples</p></li>
+<li><p><strong>scores</strong> (<em>np.ndarray</em>) – scores</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="reinforcement-learning">
+<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">¶</a></h2>
+</section>
 <section id="others">
 <h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">¶</a></h2>
 <section id="randomdigger">
@@ -275,8 +368,8 @@ method of the space.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
-<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of engine</p></li>
-<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the engine. If the
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
 value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
 Otherwise, the random state provided it is used. When set to None, an unseeded random state
 is generated. Defaults to None</p></li>

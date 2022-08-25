@@ -14,6 +14,18 @@ BayesianOptimizationDigger
     :members:
 
 
+Evolution Algorithms
+=============================
+
+GeneticAlgorithmDigger
+-----------------------------
+.. autoclass:: GeneticAlgorithmDigger
+    :members:
+
+
+Reinforcement Learning
+=============================
+
 Others
 =============================
 
