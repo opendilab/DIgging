@@ -3,7 +3,6 @@ from typing import Any, Callable, Dict, Tuple
 
 from .base_digger import BaseDigger, DIGGER_REGISTRY
 from digging.problem import ProblemHandler
-from digging.problem.space import BaseSpace
 from digging.utils.event import DiggingEvent
 
 
@@ -22,20 +21,28 @@ class RandomDigger(BaseDigger):
     """
     config = dict(num_sample=100, )
 
-    def __init__(self, cfg: Dict, search_space: "BaseSpace", random_state: Any = None) -> None:  # noqa
+    def __init__(
+            self,
+            cfg: Dict,
+            search_space: "BaseSpace",  # noqa
+            random_state: Any = None
+    ) -> None:
         super().__init__(cfg, search_space, random_state)
         self._handler = ProblemHandler(search_space)
         self._start = False
 
     def reset(self) -> None:
+        r"""
+        Reset the digger by clearing the digging queue and renew the Gaussian Process Regressor.
+        """
         self.call_event(DiggingEvent.END)
         self._start = False
         self._handler.clear()
 
     def search(self, target_func: Callable) -> Tuple[Any, float]:
         self._apply_default_logger()
-        self._start = True
         self.call_event(DiggingEvent.START)
+        self._start = True
         samples = self.propose(self._cfg.num_sample)
         scores = []
         for sample in samples:
@@ -55,14 +62,26 @@ class RandomDigger(BaseDigger):
         return np.asarray(samples)
 
     def update_score(self, samples: Any, scores: np.ndarray) -> None:
+        r"""
+        Update new samples and provided scores into data pool.
+
+        :param Any samples: samples
+        :param np.ndarray scores: scores
+        """
         self._handler.update_data(samples, scores)
         self.call_event(DiggingEvent.STEP)
 
     @property
-    def latest(self) -> Tuple[Any, float]:
+    def latest(self) -> Dict[str, Any]:
+        r"""
+        Return the latest sample and score updated into data pool.
+        """
         all_data = self._handler.get_all_data()
         return {'sample': self._search_space.convert_to_sample(all_data[0][-1]), 'score': all_data[1][-1]}
 
     @property
-    def best(self) -> Dict:
+    def best(self) -> Dict[str, Any]:
+        r"""
+        Return the current best sample and score stored in data pool.
+        """
         return self._handler.provide_best()

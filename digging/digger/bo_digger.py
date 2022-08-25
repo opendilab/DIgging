@@ -9,6 +9,7 @@ from scipy.stats import norm
 
 from .base_digger import DIGGER_REGISTRY, BaseDigger
 from digging.problem import ProblemHandler
+from digging.utils.event import DiggingEvent
 
 
 def ucb(x, gp, kappa):
@@ -81,11 +82,14 @@ class BayesianOptimizationDigger(BaseDigger):
         self._xi = self._cfg.xi
         assert self._cfg.acquisition in ['ucb', 'ei', 'poi'], self._cfg.acquisition
         self._acquire_type = self._cfg.acquisition
+        self._start = False
 
     def reset(self) -> None:
+        r"""
+        Reset the digger by clearing the digging queue and renew the Gaussian Process Regressor.
         """
-        Reset the engine by clearing the searching queue and renew the Gaussian Process Regressor.
-        """
+        self.call_event(DiggingEvent.END)
+        self._start = False
         self._handler.reset()
         self._queue.clear()
         self._gp = GaussianProcessRegressor(
@@ -137,13 +141,17 @@ class BayesianOptimizationDigger(BaseDigger):
         return np.clip(x_max, self._search_space.bounds[:, 0], self._search_space.bounds[:, 1])
 
     def search(self, target_func: Callable) -> Tuple[np.ndarray, float]:
-        """
-        The entire searching pipeline for BO. It will iteractively propose samples and get scoresaccording to
-        config, and returns best one together with its score.
+        r"""
+        The entire digging pipeline for BO. It will iteractively propose samples and get scores according to
+        config, and returns best one together with its score. It will apply default logger if no any loggers
+        subscribed already.
 
         :param Callable target_func: target function
         :return Tuple[np.ndarray, float]: the best sample and score
         """
+        self._apply_default_logger()
+        self.call_event(DiggingEvent.START)
+        self._start = True
         init_point = self._init_point
         if len(self._queue) == 0 and len(self._handler) == 0:
             init_point = max(init_point, 1)
@@ -165,12 +173,15 @@ class BayesianOptimizationDigger(BaseDigger):
         return self.best
 
     def propose(self, sample_num: int = 1) -> np.ndarray:
-        """
+        r"""
         Propose ``sample_num`` numbers of sample candidates with current state of BO algorithm.
 
         :param int sample_num: number of samples, defaults to 1
         :return np.ndarray: sample candidates
         """
+        if not self._start:
+            self._start = True
+            self.call_event(DiggingEvent.START)
         sample_list = []
         while len(sample_list) < sample_num:
             if len(self._queue) > 0:
@@ -180,23 +191,30 @@ class BayesianOptimizationDigger(BaseDigger):
             sample_list.append(candidate)
         return np.array(sample_list)
 
-    def update_score(self, samples: np.ndarray, scores: np.ndarray) -> None:
-        """
+    def update_score(self, samples: Any, scores: np.ndarray) -> None:
+        r"""
         Update the core of BO algorithm by samples and provided scores.
 
-        :param np.ndarray samples: samples
+        :param Any samples: samples
         :param np.ndarray scores: scores
         """
         self._handler.update_data(samples, scores)
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             self._gp.fit(samples, scores)
+        self.call_event(DiggingEvent.STEP)
 
     @property
-    def best(self) -> Tuple[Any, float]:
+    def latest(self) -> Dict[str, Any]:
+        r"""
+        Return the latest sample and score updated into data pool.
         """
-        Return the current best sample and score stored in data pool.
+        all_data = self._handler.get_all_data()
+        return {'sample': self._search_space.convert_to_sample(all_data[0][-1]), 'score': all_data[1][-1]}
 
-        :return Tuple[np.ndarray, np.ndarray]: best sample and its score
+    @property
+    def best(self) -> Dict[str, Any]:
+        r"""
+        Return the current best sample and score stored in data pool.
         """
         return self._handler.provide_best()

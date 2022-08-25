@@ -27,6 +27,9 @@ class TestRandomDigger:
     def test_propose(self):
         space = DiscreteSpace(5)
         digger = RandomDigger(self.config, space)
+        assert digger.space == space
+        digger = RandomDigger(self.config, space, random_state=1)
+        digger = RandomDigger(self.config, space, random_state=np.random.RandomState(2))
         samples = digger.propose(10)
         assert digger._start
         assert samples.shape == (10, 1)

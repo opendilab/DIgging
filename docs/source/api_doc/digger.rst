@@ -5,6 +5,14 @@ digging.digger
 
 .. automodule:: digging.digger
 
+Bayesian Optimization
+=============================
+
+BayesianOptimizationDigger
+-----------------------------
+.. autoclass:: BayesianOptimizationDigger
+    :members:
+
 
 Others
 =============================
