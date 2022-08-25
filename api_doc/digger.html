@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="digging.problem" href="problem.html" />
+    <link rel="next" title="digging.model" href="model.html" />
     <link rel="prev" title="API Documentation" href="index.html" /> 
 </head>
 
@@ -91,6 +91,8 @@
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">digging.digger</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bayesian-optimization">Bayesian Optimization</a><ul>
@@ -101,13 +103,19 @@
 <li class="toctree-l4"><a class="reference internal" href="#geneticalgorithmdigger">GeneticAlgorithmDigger</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reinforcement-learning">Reinforcement Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#policygradientdigger">PolicyGradientDigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ppodigger">PPODigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ppooffpolicydigger">PPOOffPolicyDigger</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#others">Others</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#randomdigger">RandomDigger</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">digging.model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="problem.html">digging.problem</a></li>
 </ul>
 </li>
@@ -354,6 +362,60 @@ generations is proposed by standard Genetic Algorithms. It returns best sample t
 </section>
 <section id="reinforcement-learning">
 <h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">¶</a></h2>
+<section id="policygradientdigger">
+<h3>PolicyGradientDigger<a class="headerlink" href="#policygradientdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PolicyGradientDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PolicyGradientDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module()</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/pg_rl_digger.html#PolicyGradientDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PolicyGradientDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of Policy Gradient algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ppodigger">
+<h3>PPODigger<a class="headerlink" href="#ppodigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PPODigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PPODigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional[Module()]</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ppo_rl_digger.html#PPODigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PPODigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of on-policy PPO algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ppooffpolicydigger">
+<h3>PPOOffPolicyDigger<a class="headerlink" href="#ppooffpolicydigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PPOOffPolicyDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PPOOffPolicyDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional[Module()]</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ppo_rl_digger.html#PPOOffPolicyDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PPOOffPolicyDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of off-policy PPO algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 <section id="others">
 <h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">¶</a></h2>
@@ -422,7 +484,7 @@ is generated. Defaults to None</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="problem.html" class="btn btn-neutral float-right" title="digging.problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="model.html" class="btn btn-neutral float-right" title="digging.model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

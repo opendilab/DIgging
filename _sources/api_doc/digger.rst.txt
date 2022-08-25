@@ -26,6 +26,22 @@ GeneticAlgorithmDigger
 Reinforcement Learning
 =============================
 
+PolicyGradientDigger
+-----------------------------
+.. autoclass:: PolicyGradientDigger
+    :members:
+
+PPODigger
+-----------------------------
+.. autoclass:: PPODigger
+    :members:
+
+PPOOffPolicyDigger
+-----------------------------
+.. autoclass:: PPOOffPolicyDigger
+    :members:
+
+
 Others
 =============================
 

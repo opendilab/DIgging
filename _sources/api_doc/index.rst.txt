@@ -5,4 +5,5 @@ API Documentation
     :maxdepth: 3
 
     digger
+    model
     problem

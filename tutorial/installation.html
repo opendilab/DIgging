@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation &mdash; DIgging 0.0.0 documentation</title>
+  <title>Installation &mdash; DIgging 0.0.0 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="digging.digger" href="digger.html" />
-    <link rel="prev" title="Getting Started" href="../tutorial/getting_started.html" /> 
+    <link rel="next" title="Getting Started" href="getting_started.html" />
+    <link rel="prev" title="Welcome to DIgging’s documentation!" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,14 +91,9 @@
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/getting_started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="digger.html">digging.digger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">digging.model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="problem.html">digging.problem</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/index.html">API Documentation</a></li>
 </ul>
 
             
@@ -144,13 +139,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>API Documentation</li>
+      <li>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api_doc/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/installation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,51 +158,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="api-documentation">
-<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="digger.html">digging.digger</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="digger.html#bayesian-optimization">Bayesian Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#bayesianoptimizationdigger">BayesianOptimizationDigger</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="digger.html#evolution-algorithms">Evolution Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#geneticalgorithmdigger">GeneticAlgorithmDigger</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="digger.html#reinforcement-learning">Reinforcement Learning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#policygradientdigger">PolicyGradientDigger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#ppodigger">PPODigger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#ppooffpolicydigger">PPOOffPolicyDigger</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="digger.html#others">Others</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="digger.html#randomdigger">RandomDigger</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">digging.model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="model.html#rnndiscretepgmodel">RNNDiscretePGModel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#rnncontinuouspgmodel">RNNContinuousPGModel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#rnnvacmodel">RNNVACModel</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="problem.html">digging.problem</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="problem.html#problemhandler">ProblemHandler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="problem.html#problemenv">ProblemEnv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="problem.html#spaces">Spaces</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="problem.html#discretespace">DiscreteSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="problem.html#continuousspace">ContinuousSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="problem.html#tuplespace">TupleSpace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="problem.html#dictspace">DictSpace</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">digging</span></code> is currently hosted on PyPI. It required python &gt;= 3.6.</p>
+<p>You can simply install <code class="docutils literal notranslate"><span class="pre">digging</span></code> from PyPI with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install DIgging
+</pre></div>
 </div>
+<p>You can also install with the newest version through source code:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/opendilab/DIgging.git
+<span class="nb">cd</span> DIgging
+pip install --user .
+</pre></div>
+</div>
+<p>After installation, run this python code, and version information of <code class="docutils literal notranslate"><span class="pre">digging</span></code> should be shown.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">digging</span> <span class="kn">import</span> <span class="n">__TITLE__</span><span class="p">,</span> <span class="n">__VERSION__</span><span class="p">,</span> <span class="n">__AUTHOR__</span><span class="p">,</span> <span class="n">__DESCRIPTION__</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="n">__TITLE__</span><span class="p">,</span> <span class="n">__VERSION__</span><span class="p">)</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="n">__DESCRIPTION__</span><span class="p">)</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Powered by&#39;</span><span class="p">,</span> <span class="n">__AUTHOR__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">digging</span></code> is still under development.</p>
 </section>
 
 
@@ -218,10 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="digger.html" class="btn btn-neutral float-right" title="digging.digger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tutorial/getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to DIgging’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
