@@ -3,18 +3,18 @@ import copy
 from typing import Any, Callable, Dict, Sequence, Tuple
 
 from .base_digger import BaseDigger, DIGGER_REGISTRY
-from disearch.problem import ProblemHandler
+from digging.problem import ProblemHandler
 from digging.utils.event import DiggingEvent
 
 
 @DIGGER_REGISTRY.register('ga')
-class GeneticAlgorithmEngine(BaseDigger):
+class GeneticAlgorithmDigger(BaseDigger):
     """
     The Genetic Algorithm digger. The digger is usually used in discrete space.
 
     :param Dict cfg: user config
-    :param BaseSpace search_space: searching space of engine
-    :param Any random_state: the random state to set the random seed or state of the engine. If the
+    :param BaseSpace search_space: searching space of digger
+    :param Any random_state: the random state to set the random seed or state of the digger. If the
         value is an integer, it is used as the seed for creating a ``numpy.random.RandomState``.
         Otherwise, the random state provided it is used. When set to None, an unseeded random state
         is generated. Defaults to None
@@ -25,7 +25,6 @@ class GeneticAlgorithmEngine(BaseDigger):
         mutate_rate=0.1,
         max_generation=100,
         population_size=100,
-        verbose=False,
     )
 
     def __init__(
@@ -40,11 +39,10 @@ class GeneticAlgorithmEngine(BaseDigger):
 
         self._handler = ProblemHandler(search_space)
         self._first_generation = True
-        self._verbose = self._cfg.verbose
 
     def reset(self) -> None:
-        """
-        Reset the engine and clear all current generations.
+        r"""
+        Reset the digger and clear all current generations.
         """
         self.call_event(DiggingEvent.END)
         self._handler.clear()
@@ -61,15 +59,12 @@ class GeneticAlgorithmEngine(BaseDigger):
         self._apply_default_logger()
         for i in range(self._cfg.max_generation):
             pop = self.propose(self._cfg.population_size)
-            score = self._handler.get_score(pop, target_func)
-            self.update_score(pop, score)
-            best_seq, best_score = self.best
-            if not self._verbose:
-                print(" Generation {} best score: {:.3f} .".format(i + 1, best_score))
-        return best_seq, best_score
+            scores = np.asarray([target_func(p) for p in pop])
+            self.update_score(pop, scores)
+        return self.best
 
     def propose(self, candidate_num: int) -> np.ndarray:
-        """
+        r"""
         Propose ``sample_num`` numbers of sample candidates by getting a new generation.
 
         :param int sample_num: number of samples, defaults to 1
@@ -82,8 +77,9 @@ class GeneticAlgorithmEngine(BaseDigger):
             self._first_generation = False
         else:
             samples, scores = self._handler.get_all_data()
+            norm_scores = scores - np.min(scores)
             parents_idx = self._random_state.choice(
-                np.arange(len(self._handler)), candidate_num, True, p=scores / np.sum(scores)
+                np.arange(len(self._handler)), candidate_num, True, p=norm_scores / np.sum(norm_scores)
             )
             parents = samples[parents_idx]
             children = self._crossover(parents, parents.copy())
@@ -114,6 +110,7 @@ class GeneticAlgorithmEngine(BaseDigger):
         :param np.ndarray scores: scores
         """
         self._handler.update_data(sequences, scores)
+        self.call_event(DiggingEvent.STEP)
 
     @property
     def latest(self) -> Dict[str, Any]:

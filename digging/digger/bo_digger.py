@@ -38,8 +38,8 @@ class BayesianOptimizationDigger(BaseDigger):
     targets using bayesian optimization.
 
     :param Dict cfg: user config
-    :param BaseSpace search_space: searching space of engine
-    :param Any random_state: the random state to set the random seed or state of the engine. If the
+    :param BaseSpace search_space: searching space of digger
+    :param Any random_state: the random state to set the random seed or state of the digger. If the
         value is an integer, it is used as the seed for creating a ``numpy.random.RandomState``.
         Otherwise, the random state provided it is used. When set to None, an unseeded random state
         is generated. Defaults to None

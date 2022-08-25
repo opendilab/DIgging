@@ -125,7 +125,7 @@ class ScreenLogger(StepTracker):
         return "| " + " | ".join(cells) + " |"
 
     def _step(self, digger):
-        res = digger.latest
+        res = digger.best
         return self._row(res['score'], digger.space.get_log_data(res['sample'], self._default_data_max_col))
 
     def _skip(self):

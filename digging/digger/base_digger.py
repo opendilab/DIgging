@@ -86,7 +86,7 @@ class BaseDigger(ABC):
 
     def _apply_default_logger(self) -> None:
         if not any([subs for subs in self._events.values()]):
-            self.apply_logger('screen', 2)
+            self.apply_logger('screen', 1)
 
     def call_event(self, event: EventType) -> None:
         for _, callback in self._events[event].items():
