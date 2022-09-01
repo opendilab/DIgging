@@ -10,13 +10,16 @@ meta = {}
 with open(os.path.join(here, 'digging', '__init__.py'), 'r') as f:
     exec(f.read(), meta)
 
-description = """DIgging: """
+with open('README.md', 'r', 'utf-8') as f:
+    readme = f.read()
+
 
 setup(
     name=meta['__TITLE__'],
     version=meta['__VERSION__'],
     description=meta['__DESCRIPTION__'],
-    long_description=description,
+    long_description=readme,
+    long_description_content_type='text/markdown',
     author=meta['__AUTHOR__'],
     license='Apache License, Version 2.0',
     keywords='searching',

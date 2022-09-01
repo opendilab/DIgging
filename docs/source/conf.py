@@ -91,7 +91,7 @@ epub_title = project
 epub_exclude_files = ['search.html']
 
 # Whitelist pattern for tags (set to None to ignore all tags)
-smv_current_version = '0.0.0.1'
+smv_current_version = 'latest'
 smv_tag_whitelist = r'^v.*$'  # Include all tags start with 'v'
 #smv_branch_whitelist = r'^.*$'  # Include all branches
 smv_branch_whitelist = 'main'  # Include all branches
