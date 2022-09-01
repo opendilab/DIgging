@@ -31,7 +31,6 @@ html: contents
 	@touch "$(BUILDDIR)/html/.nojekyll"
 prod:
 	@NO_CONTENTS_BUILD='' $(SPHINXMULTIVERSION) "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
-	@cp main_page.html "$(BUILDDIR)/html/index.html"
 	@touch "$(BUILDDIR)/html/.nojekyll"
 
 clean:
