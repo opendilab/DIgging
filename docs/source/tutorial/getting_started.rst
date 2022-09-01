@@ -16,9 +16,9 @@ update best sample and score after each asking. The modules and workflows are sh
 in the following image. 
 
 
-.. .. image:: ../../figs/DIgging_pipe_1.png
-..     :alt: common digging
-..     :align: center
+.. image:: ../../figs/digging_pipe_1.png
+    :alt: common digging
+    :align: center
 
 
 Reinforcement Learning digging pipeline needs to build a ``ProblemEnv`` which generates
@@ -27,9 +27,9 @@ Some other RL workers such as collector and replay buffer need to be established
 RL procedure. The modules and workflows are shown in the following image.
 
 
-.. .. image:: ../../figs/DIgging_pipe_2.png
-..     :alt: rl digging
-..     :align: center
+.. image:: ../../figs/digging_pipe_2.png
+    :alt: rl digging
+    :align: center
 
 
 Basic Examples
