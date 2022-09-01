@@ -178,10 +178,12 @@ candidates.</p>
 will store all the searched samples and scores, ask scores of a batch of samples and
 update best sample and score after each asking. The modules and workflows are shown
 in the following image.</p>
+<img alt="common digging" class="align-center" src="../_images/digging_pipe_1.png" />
 <p>Reinforcement Learning digging pipeline needs to build a <code class="docutils literal notranslate"><span class="pre">ProblemEnv</span></code> which generates
 state, reward of a provided searching action, and use it to train the RL policy in <code class="docutils literal notranslate"><span class="pre">Digger</span></code>.
 Some other RL workers such as collector and replay buffer need to be established to execute
 RL procedure. The modules and workflows are shown in the following image.</p>
+<img alt="rl digging" class="align-center" src="../_images/digging_pipe_2.png" />
 </section>
 <section id="basic-examples">
 <h2>Basic Examples<a class="headerlink" href="#basic-examples" title="Permalink to this heading">¶</a></h2>
