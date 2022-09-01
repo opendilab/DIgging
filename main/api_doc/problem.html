@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>digging.problem &mdash; DIgging 0.0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="digging.model" href="model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DIgging
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="digger.html">digging.digger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">digging.model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">digging.problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#problemhandler">ProblemHandler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problemenv">ProblemEnv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spaces">Spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#discretespace">DiscreteSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#continuousspace">ContinuousSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuplespace">TupleSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dictspace">DictSpace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DIgging</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API Documentation</a> &raquo;</li>
+        
+      <li>digging.problem</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api_doc/problem.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-digging.problem">
+<span id="digging-problem"></span><h1>digging.problem<a class="headerlink" href="#module-digging.problem" title="Permalink to this heading">¶</a></h1>
+<section id="problemhandler">
+<h2>ProblemHandler<a class="headerlink" href="#problemhandler" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">ProblemHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/problem_handler.html#ProblemHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is used to provide a uniformed interface for the digger to interact with.
+It can store all the searched samples and scores together with the best ones. Users
+can provide a convert function to convert sample into data array if the sample is not
+in a standard array type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – Search space of handler.</p></li>
+<li><p><strong>sample_converter</strong> (<em>Callable</em>) – Convert func to convert samples to data, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.best">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.problem.ProblemHandler.best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the currently best sample and its score in the data pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
+<dd class="field-odd"><p>best sample and its score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.best_score">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#digging.problem.ProblemHandler.best_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the currently best score only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_handler.html#ProblemHandler.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemHandler.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the handler and data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.get_cached_score">
+<span class="sig-name descname"><span class="pre">get_cached_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_handler.html#ProblemHandler.get_cached_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemHandler.get_cached_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get scores of a batch of sample from stored scores. All the samples must be searched or updated
+before. Otherwise the score will be <cite>None</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>samples</strong> (<em>Any</em>) – Samples to get scores.</p>
+</dd>
+<dt class="field-even">Return List<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scores of all provided samples stored as <cite>List</cite> for there will be <cite>None</cite> elements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemHandler.update_data">
+<span class="sig-name descname"><span class="pre">update_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_handler.html#ProblemHandler.update_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemHandler.update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a batch of samples and scores. If not stored already, they will be added into data pool.
+Best score and sample will be stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> (<em>Any</em>) – Samples to be updated</p></li>
+<li><p><strong>scores</strong> (<em>np.ndarray</em>) – Scores to be updated</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="problemenv">
+<h2>ProblemEnv<a class="headerlink" href="#problemenv" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">ProblemEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.best">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.problem.ProblemEnv.best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.best_score">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#digging.problem.ProblemEnv.best_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the currently best score only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the data pool and close the env.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.env_num">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#digging.problem.ProblemEnv.env_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>The batched num of samples in one step</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.launch">
+<span class="sig-name descname"><span class="pre">launch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv.launch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv.launch" title="Permalink to this definition">¶</a></dt>
+<dd><p>The first <code class="docutils literal notranslate"><span class="pre">reset</span></code> called by <code class="docutils literal notranslate"><span class="pre">ding</span></code> workers.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.ready_obs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ready_obs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span></em><a class="headerlink" href="#digging.problem.ProblemEnv.ready_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface to get observations of current step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return Dict<span class="colon">:</span></dt>
+<dd class="field-odd"><p>observations for each <code class="docutils literal notranslate"><span class="pre">env_id</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starting_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all batch of samples with provided sample or random/zero ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>starting_point</strong> (<em>Optional</em><em>[</em><em>np.ndarray</em><em>]</em>) – provided starting samples, defaults to None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamic_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv.seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set random seed and dynamic seed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> (<em>int</em>) – seed value</p></li>
+<li><p><strong>dynamic_seed</strong> (<em>bool</em>) – whether to use dynamic seed, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ProblemEnv.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">BaseEnvTimestep</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/problem/problem_env.html#ProblemEnv.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ProblemEnv.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run one step of a batch of actions. It will git scores of all actions from target functions
+and return its scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>actions</strong> (<em>Dict</em>) – batch of actions</p>
+</dd>
+<dt class="field-even">Return Dict[int, BaseEnvTimestep]<span class="colon">:</span></dt>
+<dd class="field-even"><p>The env timestep of each batch of samples.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="spaces">
+<h2>Spaces<a class="headerlink" href="#spaces" title="Permalink to this heading">¶</a></h2>
+<section id="discretespace">
+<h3>DiscreteSpace<a class="headerlink" href="#discretespace" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">DiscreteSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape:</span> <span class="pre">~typing.Optional[~typing.List]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">~typing.Type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.int64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">~typing.Optional[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discrete search space. It is configured by a input value or a list.
+The element of input at each position determinates the discrete
+space for each dim.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>List</em>) – List of space shape, defaults to None.</p></li>
+<li><p><strong>dtype</strong> (<em>Type</em>) – Data type of samples, defaults to np.int64.</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – Random state of sampler, defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">DiscreteSpace</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">array([3, ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([1, 1, 0])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.convert_to_data">
+<span class="sig-name descname"><span class="pre">convert_to_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace.convert_to_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace.convert_to_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a sample into data array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample</strong> (<em>Any</em>) – The sample to be convert.</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted data array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.convert_to_sample">
+<span class="sig-name descname"><span class="pre">convert_to_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace.convert_to_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace.convert_to_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data into original sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data array to be convert.</p>
+</dd>
+<dt class="field-even">Return Any<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.create_empty">
+<span class="sig-name descname"><span class="pre">create_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace.create_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace.create_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an empty space for the initialization of data pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The empty array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.nshape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nshape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#digging.problem.DiscreteSpace.nshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of the space shape.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random sample from the space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return Any<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The random sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DiscreteSpace.sample_single">
+<span class="sig-name descname"><span class="pre">sample_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DiscreteSpace.sample_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DiscreteSpace.sample_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random value at the position of the discrete space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>position</strong> (<em>int</em>) – The position in the space to sample.</p>
+</dd>
+<dt class="field-even">Return int<span class="colon">:</span></dt>
+<dd class="field-even"><p>The random value at position.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="continuousspace">
+<h3>ContinuousSpace<a class="headerlink" href="#continuousspace" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.ContinuousSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">ContinuousSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape:</span> <span class="pre">~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low:</span> <span class="pre">~typing.Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high:</span> <span class="pre">~typing.Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">~typing.Type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">~typing.Optional[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continuous search space. The space is defined by its shape and lower/higher bounds, with continuous value.
+Users can set the lower and higher boundary of each dimension of the space, otherwise the value will be
+infinite at these dimensions. Each dimension can have different boundary types and values. If so, the shape
+of boundary argument must be the same as space’s shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>List</em>) – Shape of the space.</p></li>
+<li><p><strong>low</strong> (<em>float</em>) – The lower bound of space, defaults to None.</p></li>
+<li><p><strong>high</strong> (<em>float</em>) – The higher bound of space, defaults to None.</p></li>
+<li><p><strong>dtype</strong> (<em>Type</em>) – Data type of space, defaults to np.float32.</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – Random space of sampler, defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">ContinuousSpace</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">array([2, 3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">array([[2.7791994, 4.216622 , 3.0280395],</span>
+<span class="go">   [4.2073464, 7.35141  , 2.5952444]], dtype=float32)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ContinuousSpace.convert_to_data">
+<span class="sig-name descname"><span class="pre">convert_to_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace.convert_to_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace.convert_to_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a sample into data array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample</strong> (<em>Any</em>) – The sample to be convert.</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted data array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ContinuousSpace.convert_to_sample">
+<span class="sig-name descname"><span class="pre">convert_to_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace.convert_to_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace.convert_to_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data into original sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data array to be convert.</p>
+</dd>
+<dt class="field-even">Return Any<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ContinuousSpace.create_empty">
+<span class="sig-name descname"><span class="pre">create_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace.create_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace.create_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an empty space for the initialization of data pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The empty array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.ContinuousSpace.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#ContinuousSpace.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.ContinuousSpace.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random sample from the space. unbounded dimension will be sampled from a normal distribution,
+dimensions with one bound will be sampled from a exponential distribution. Others will be sampled
+from a exponential distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The random sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tuplespace">
+<h3>TupleSpace<a class="headerlink" href="#tuplespace" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">TupleSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">space_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Space tuple consists of one or more kinds of space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>space_list</strong> (<em>List</em>) – The provided space list.</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DiscreteSpace</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">ContinuousSpace</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">HybridSpace</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">[array([1]), array([2])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">[array(1), array([-0.35141  , 1.5952444], dtype=float32)]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.convert_to_data">
+<span class="sig-name descname"><span class="pre">convert_to_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace.convert_to_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace.convert_to_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a sample into data array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample</strong> (<em>Any</em>) – The sample to be convert.</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted data array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.convert_to_sample">
+<span class="sig-name descname"><span class="pre">convert_to_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace.convert_to_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace.convert_to_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data into original sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data array to be convert.</p>
+</dd>
+<dt class="field-even">Return Any<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.create_empty">
+<span class="sig-name descname"><span class="pre">create_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace.create_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace.create_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an empty space for the initialization of data pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The empty array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.nshape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nshape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></em><a class="headerlink" href="#digging.problem.TupleSpace.nshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a shape list of each space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#TupleSpace.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.TupleSpace.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get am array of random samples from each space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sample array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.TupleSpace.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></em><a class="headerlink" href="#digging.problem.TupleSpace.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a shape list of each space.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="dictspace">
+<h3>DictSpace<a class="headerlink" href="#dictspace" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.problem.DictSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.problem.</span></span><span class="sig-name descname"><span class="pre">DictSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">space_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DictSpace.convert_to_data">
+<span class="sig-name descname"><span class="pre">convert_to_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace.convert_to_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace.convert_to_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a sample dict into data array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample</strong> (<em>Dict</em>) – The sample to be convert.</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted data array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DictSpace.convert_to_sample">
+<span class="sig-name descname"><span class="pre">convert_to_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace.convert_to_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace.convert_to_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data into sample dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data array to be convert.</p>
+</dd>
+<dt class="field-even">Return Dict<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DictSpace.create_empty">
+<span class="sig-name descname"><span class="pre">create_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace.create_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace.create_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an empty space for the initialization of data pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The empty array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.problem.DictSpace.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/digging/problem/space.html#DictSpace.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.problem.DictSpace.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a dict of random samples from each space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return Dict<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sample dict.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.problem.DictSpace.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span></em><a class="headerlink" href="#digging.problem.DictSpace.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shape array of the space. It should be equal to the <cite>shape</cite> of a sample in space.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="model.html" class="btn btn-neutral float-left" title="digging.model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, OpenDILab Contributors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

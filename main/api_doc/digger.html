@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>digging.digger &mdash; DIgging 0.0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="digging.model" href="model.html" />
+    <link rel="prev" title="API Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DIgging
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">digging.digger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bayesian-optimization">Bayesian Optimization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bayesianoptimizationdigger">BayesianOptimizationDigger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#evolution-algorithms">Evolution Algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geneticalgorithmdigger">GeneticAlgorithmDigger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reinforcement-learning">Reinforcement Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#policygradientdigger">PolicyGradientDigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ppodigger">PPODigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ppooffpolicydigger">PPOOffPolicyDigger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#others">Others</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#randomdigger">RandomDigger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">digging.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html">digging.problem</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DIgging</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API Documentation</a> &raquo;</li>
+        
+      <li>digging.digger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api_doc/digger.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-digging.digger">
+<span id="digging-digger"></span><h1>digging.digger<a class="headerlink" href="#module-digging.digger" title="Permalink to this heading">¶</a></h1>
+<section id="bayesian-optimization">
+<h2>Bayesian Optimization<a class="headerlink" href="#bayesian-optimization" title="Permalink to this heading">¶</a></h2>
+<section id="bayesianoptimizationdigger">
+<h3>BayesianOptimizationDigger<a class="headerlink" href="#bayesianoptimizationdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">BayesianOptimizationDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Bayesian Optimization algorithm digger. The digger takes a target function to optimize
+in a discrete space as well as the bounds in order to find the value for samples yield the maximum
+targets using bayesian optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
+value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
+Otherwise, the random state provided it is used. When set to None, an unseeded random state
+is generated. Defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.latest">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest sample and score updated into data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.propose">
+<span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.propose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.propose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propose <code class="docutils literal notranslate"><span class="pre">sample_num</span></code> numbers of sample candidates with current state of BO algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_num</strong> (<em>int</em>) – number of samples, defaults to 1</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>sample candidates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the digger by clearing the digging queue and renew the Gaussian Process Regressor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>The complete digging pipeline of BO. It will iteractively propose samples and get scores according to
+config, and returns best one together with its score. It will apply default logger if no any loggers
+subscribed already.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_func</strong> (<em>Callable</em>) – target function</p>
+</dd>
+<dt class="field-even">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
+<dd class="field-even"><p>the best sample and score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.BayesianOptimizationDigger.update_score">
+<span class="sig-name descname"><span class="pre">update_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/bo_digger.html#BayesianOptimizationDigger.update_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.BayesianOptimizationDigger.update_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the core of BO algorithm by samples and provided scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> (<em>Any</em>) – samples</p></li>
+<li><p><strong>scores</strong> (<em>np.ndarray</em>) – scores</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="evolution-algorithms">
+<h2>Evolution Algorithms<a class="headerlink" href="#evolution-algorithms" title="Permalink to this heading">¶</a></h2>
+<section id="geneticalgorithmdigger">
+<h3>GeneticAlgorithmDigger<a class="headerlink" href="#geneticalgorithmdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">GeneticAlgorithmDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Genetic Algorithm digger. The digger is usually used in discrete space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
+value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
+Otherwise, the random state provided it is used. When set to None, an unseeded random state
+is generated. Defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.latest">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest sample and score updated into data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.propose">
+<span class="sig-name descname"><span class="pre">propose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidate_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.propose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.propose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propose <code class="docutils literal notranslate"><span class="pre">sample_num</span></code> numbers of sample candidates by getting a new generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_num</strong> (<em>int</em>) – number of samples, defaults to 1</p>
+</dd>
+<dt class="field-even">Return np.ndarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>sample candidates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the digger and clear all current generations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>The complete digging pipeline of GA. The first generation is randomly generated and the following
+generations is proposed by standard Genetic Algorithms. It returns best sample together with its score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_func</strong> (<em>Callable</em>) – target function</p>
+</dd>
+<dt class="field-even">Return Tuple[np.ndarray, float]<span class="colon">:</span></dt>
+<dd class="field-even"><p>the best sample and score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.GeneticAlgorithmDigger.update_score">
+<span class="sig-name descname"><span class="pre">update_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/ga_digger.html#GeneticAlgorithmDigger.update_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.GeneticAlgorithmDigger.update_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a set of samples and scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequences</strong> (<em>np.ndarray</em>) – samples</p></li>
+<li><p><strong>scores</strong> (<em>np.ndarray</em>) – scores</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="reinforcement-learning">
+<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">¶</a></h2>
+<section id="policygradientdigger">
+<h3>PolicyGradientDigger<a class="headerlink" href="#policygradientdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PolicyGradientDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PolicyGradientDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module()</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/pg_rl_digger.html#PolicyGradientDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PolicyGradientDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of Policy Gradient algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ppodigger">
+<h3>PPODigger<a class="headerlink" href="#ppodigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PPODigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PPODigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional[Module()]</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ppo_rl_digger.html#PPODigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PPODigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of on-policy PPO algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ppooffpolicydigger">
+<h3>PPOOffPolicyDigger<a class="headerlink" href="#ppooffpolicydigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.PPOOffPolicyDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">PPOOffPolicyDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional[Module()]</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/ppo_rl_digger.html#PPOOffPolicyDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.PPOOffPolicyDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>RL digger of off-policy PPO algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – NN models within the RL policy, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">¶</a></h2>
+<section id="randomdigger">
+<h3>RandomDigger<a class="headerlink" href="#randomdigger" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digging.digger.</span></span><span class="sig-name descname"><span class="pre">RandomDigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseSpace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random digger of provided searching space. The random candidates comes from the <code class="xref py py-func docutils literal notranslate"><span class="pre">sample()</span></code>
+method of the space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<em>Dict</em>) – user config</p></li>
+<li><p><strong>search_space</strong> (<em>BaseSpace</em>) – searching space of digger</p></li>
+<li><p><strong>random_state</strong> (<em>Any</em>) – the random state to set the random seed or state of the digger. If the
+value is an integer, it is used as the seed for creating a <code class="docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code>.
+Otherwise, the random state provided it is used. When set to None, an unseeded random state
+is generated. Defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger.latest">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#digging.digger.RandomDigger.latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest sample and score updated into data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger.provide_best">
+<span class="sig-name descname"><span class="pre">provide_best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger.provide_best"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger.provide_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current best sample and score stored in data pool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the digger by clearing the digging queue and renew the Gaussian Process Regressor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digging.digger.RandomDigger.update_score">
+<span class="sig-name descname"><span class="pre">update_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/digging/digger/random_digger.html#RandomDigger.update_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#digging.digger.RandomDigger.update_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update new samples and provided scores into data pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> (<em>Any</em>) – samples</p></li>
+<li><p><strong>scores</strong> (<em>np.ndarray</em>) – scores</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="model.html" class="btn btn-neutral float-right" title="digging.model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, OpenDILab Contributors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
