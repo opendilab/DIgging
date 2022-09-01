@@ -17,17 +17,13 @@
 # -- Project information -----------------------------------------------------
 
 import os
-import sys
 from datetime import datetime
-from subprocess import Popen
 
 from packaging import version as version_
 
 # Get current location
 _DOC_PATH = os.path.dirname(os.path.abspath(__file__))
 _PROJ_PATH = os.path.abspath(os.path.join(_DOC_PATH, '..', '..'))
-_LIBS_PATH = os.path.join(_DOC_PATH, '_libs')
-_SHIMS_PATH = os.path.join(_DOC_PATH, '_shims')
 os.chdir(_PROJ_PATH)
 
 from digging import __TITLE__, __AUTHOR__, __VERSION__
@@ -90,3 +86,16 @@ htmlhelp_basename = 'DIggingdoc'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
+
+epub_title = project
+epub_exclude_files = ['search.html']
+
+# Whitelist pattern for tags (set to None to ignore all tags)
+smv_current_version = '0.0.0.1'
+smv_tag_whitelist = r'^v.*$'  # Include all tags start with 'v'
+#smv_branch_whitelist = r'^.*$'  # Include all branches
+smv_branch_whitelist = 'main'  # Include all branches
+#smv_remote_whitelist = r'^.*$'  # Use branches from all remotes
+smv_remote_whitelist = r'(origin)'
+smv_released_pattern = r'^tags/.*$'  # Tags only
+smv_outputdir_format = '{ref.name}'  # Use the branch/tag name
