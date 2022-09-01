@@ -34,8 +34,8 @@ jobs:
           git branch -av
           git remote -v
           git tag
-          make docs
-          mv docs/build/html public
+          make pdocs
+          mv ./docs/build/html ./public
           rm -rf build
       - name: Deploy to Github Page
         uses: JamesIves/github-pages-deploy-action@3.7.1

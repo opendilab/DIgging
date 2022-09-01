@@ -1418,3 +1418,4 @@ events.*
 
 !*logger.py
 !*digging_*.png
+*.demo.py.txt

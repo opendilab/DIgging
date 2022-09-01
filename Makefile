@@ -33,7 +33,9 @@ unittest:
 		$(if ${WORKERS},-n ${WORKERS},)
 
 docs:
-	$(MAKE) -C "${DOC_DIR}" html
+	$(MAKE) -C "${DOC_DIR}" build
+pdocs:
+	$(MAKE) -C "${DOC_DIR}" prod
 
 format:
 	yapf --in-place --recursive -p --verbose --style .style.yapf ${FORMAT_DIR}
