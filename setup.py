@@ -53,7 +53,7 @@ setup(
         ],
         'style': [
             'yapf==0.29.0',
-            'flake8~=3.5',
+            'flake8==4.0.1',
         ],
     },
     classifiers=[
